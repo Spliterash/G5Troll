@@ -1,0 +1,9 @@
+name: G5Troll
+version: '${project.version}'
+main: pl.kubag5.g5troll.G5Troll
+api-version: 1.19
+authors: [ kubag5 ]
+
+commands:
+  troll:
+    permission: g5troll.admin

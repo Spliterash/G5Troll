@@ -29,8 +29,14 @@ public class TrollCmd implements CommandExecutor {
                         ArrayList<String> listaArrayList = new ArrayList<>(Arrays.asList(args));
                         listaArrayList.remove(0);
                         listaArrayList.remove(0);
-                        troll.execute(listaArrayList.toArray(new String[listaArrayList.size()]));
-                        sender.sendMessage(ChatColor.GOLD + troll.getName() + ChatColor.GREEN + " executed.");
+                        try {
+                            troll.execute(listaArrayList.toArray(new String[listaArrayList.size()]));
+                            sender.sendMessage(ChatColor.GOLD + troll.getName() + ChatColor.GREEN + " executed.");
+                        } catch (Exception ex) {
+                            sender.sendMessage(ChatColor.RED + "Error (is your victim online?)");
+                        }
+
+
                     }
                 }
             }

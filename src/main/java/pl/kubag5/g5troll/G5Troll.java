@@ -22,7 +22,10 @@ public final class G5Troll extends JavaPlugin {
             new Pumpkin(),
             new RandomizeInventory(),
             new ExplosionSound(),
-            new CreeperSound()
+            new CreeperSound(),
+            new Hit(),
+            new Hunger(),
+            new InventoryDrop()
     };
 
     @Override

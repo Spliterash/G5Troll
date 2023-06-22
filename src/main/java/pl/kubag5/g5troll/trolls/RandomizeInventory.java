@@ -18,7 +18,7 @@ public class RandomizeInventory extends Troll {
         shuffleInventory(p);
     }
 
-    public static void shuffleInventory(Player player) {
+    private void shuffleInventory(Player player) {
         ItemStack[] contents = player.getInventory().getContents();
         int size = contents.length;
 

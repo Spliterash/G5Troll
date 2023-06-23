@@ -7,6 +7,7 @@ public class Hunger extends Troll {
 
     public Hunger() {
         super("Hunger", "Set the food level.", new String[]{"0"});
+        setUsage("/troll execute Firework {player} {FoodLevel}");
     }
 
     @Override

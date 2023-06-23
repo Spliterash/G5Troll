@@ -55,6 +55,9 @@ public class Troll {
         this.args = args;
     }
 
+    public void setArg(int i, String arg) {
+        this.args[i] = arg;
+    }
 
     public void execute(String[] args) {
 

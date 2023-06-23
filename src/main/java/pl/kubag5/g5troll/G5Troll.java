@@ -2,12 +2,19 @@ package pl.kubag5.g5troll;
 
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.server.ServerLoadEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import pl.kubag5.g5troll.trolls.*;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public final class G5Troll extends JavaPlugin {
+public final class G5Troll extends JavaPlugin implements Listener {
 
     private static G5Troll trl;
     Troll[] trolls = {
@@ -25,7 +32,10 @@ public final class G5Troll extends JavaPlugin {
             new CreeperSound(),
             new Hit(),
             new Hunger(),
-            new InventoryDrop()
+            new InventoryDrop(),
+            new FakeBlocks(),
+            new Noob(),
+            new FakeDiamondOre()
     };
 
     @Override
@@ -38,8 +48,40 @@ public final class G5Troll extends JavaPlugin {
         // https://bstats.org/signatures/bukkit/G5Troll.svg
         int pluginId = 18817;
         Metrics metrics = new Metrics(this, pluginId);
+        getServer().getPluginManager().registerEvents(this, this);
+        FileConfiguration config = this.getConfig();
+        if (!config.isSet("changer")) {
+            config.options().copyDefaults(true);
+            this.saveDefaultConfig();
+        }
+
     }
 
+    @EventHandler
+    public void onServerLoad(ServerLoadEvent e) {
+        for (String st : getConfig().getConfigurationSection("changer").getKeys(false)) {
+            Troll troll = getTrollByName(st);
+            if (troll != null) {
+                for (String str : getConfig().getConfigurationSection("changer." + st).getKeys(false)) {
+                    if (str.equalsIgnoreCase("description")) {
+                        troll.setDesc(getConfig().getString("changer." + st + ".description"));
+                    }
+                    if (str.equalsIgnoreCase("usage")) {
+                        troll.setUsage(getConfig().getString("changer." + st + ".usage"));
+                    }
+                    if (str.startsWith("default_arg")) {
+                        try {
+                            int arg = Integer.parseInt(str.replaceFirst("default_arg", ""));
+                            troll.setArg(arg-1, getConfig().getString("changer." + st + ".default_arg" + arg));
+                        } catch (Exception ignored) {}
+                    }
+                }
+                getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[G5Changer] " + st + " changed");
+            } else {
+                getServer().getConsoleSender().sendMessage(ChatColor.RED + "[G5Changer] " + st + " don't exist.");
+            }
+        }
+    }
     @Override
     public void onDisable() {
         // Plugin shutdown logic

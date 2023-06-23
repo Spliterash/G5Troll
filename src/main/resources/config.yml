@@ -1,0 +1,7 @@
+# you can use changer if you want change description, usage or default args.
+changer:
+  TROLL_NAME:
+    description: "something"
+    default_arg1: "5"
+    default_arg2: "25"
+    usage: "/troll execute TROLL_NAME {player} {arg1} {arg2}"

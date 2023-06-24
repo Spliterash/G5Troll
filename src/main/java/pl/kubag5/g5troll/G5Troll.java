@@ -4,6 +4,7 @@ package pl.kubag5.g5troll;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -35,7 +36,11 @@ public final class G5Troll extends JavaPlugin implements Listener {
             new InventoryDrop(),
             new FakeBlocks(),
             new Noob(),
-            new FakeDiamondOre()
+            new FakeDiamondOre(),
+            new Cobweb(),
+            new Rotate(),
+            new ScaryRandomTeleport(),
+            new Funeral()
     };
 
     @Override

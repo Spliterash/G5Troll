@@ -35,8 +35,6 @@ public class TrollCmd implements CommandExecutor {
                         } catch (Exception ex) {
                             sender.sendMessage(ChatColor.RED + "Error (is your victim online?)");
                         }
-
-
                     }
                 }
             }

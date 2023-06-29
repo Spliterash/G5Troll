@@ -2,11 +2,13 @@ package pl.kubag5.g5troll.trolls;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
 public class AntiMiner extends Troll {
     public AntiMiner() {
         super("AntiMiner", "kicks the player out of the hole", null);
+        setIcon(Material.GOLDEN_PICKAXE);
     }
 
     @Override

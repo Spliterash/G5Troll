@@ -1,6 +1,7 @@
 package pl.kubag5.g5troll.trolls;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 
@@ -9,6 +10,7 @@ public class Firework extends Troll {
     public Firework() {
         super("Firework", "Launch the player into the air!", new String[]{"3.5"});
         setUsage("/troll execute Firework {player} {power}");
+        setIcon(Material.FIREWORK_ROCKET);
     }
 
     @Override

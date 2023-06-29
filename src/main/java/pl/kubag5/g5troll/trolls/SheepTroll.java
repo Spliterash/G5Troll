@@ -2,6 +2,7 @@ package pl.kubag5.g5troll.trolls;
 
 import org.bukkit.Bukkit;
 import org.bukkit.DyeColor;
+import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Sheep;
@@ -12,6 +13,7 @@ public class SheepTroll extends Troll {
     public SheepTroll() {
         super("Sheep", "spawns sheep with a random color.", new String[]{"5"});
         setUsage("/troll execute Sheep {player} {sheepCount}");
+        setIcon(Material.WHITE_WOOL);
     }
 
     @Override

@@ -14,8 +14,9 @@ import java.util.Random;
 
 public class BlockRain extends Troll {
     public BlockRain() {
-        super("BlockRain", "", new String[]{"25", "DIRT", "1.0"});
+        super("BlockRain", "shoots blocks into the air.", new String[]{"25", "DIRT", "1.0"});
         setUsage("/troll execute BlockRain {player} {blockCount} {blockType} {power}");
+        setIcon(Material.ORANGE_WOOL);
     }
 
     @Override

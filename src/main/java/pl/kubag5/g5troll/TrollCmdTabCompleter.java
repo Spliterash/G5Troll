@@ -1,8 +1,10 @@
 package pl.kubag5.g5troll;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -21,6 +23,8 @@ public class TrollCmdTabCompleter implements TabCompleter {
             ArrayList<String> list = new ArrayList<>();
             list.add("execute");
             list.add("check");
+            list.add("menu");
+            list.add("reload");
             return list;
         }
         if (args.length == 2) {
@@ -36,7 +40,14 @@ public class TrollCmdTabCompleter implements TabCompleter {
             if (args[0].equalsIgnoreCase("execute")) {
                 ArrayList<String> list = new ArrayList<>();
                 try {
-                    list.add(main.getTrollByName(args[1]).getArg(args.length-4));
+                    String hint = main.getTrollByName(args[1]).getArg(args.length-4);
+                    if (hint.equalsIgnoreCase("{player}")) {
+                        for (Player p : Bukkit.getOnlinePlayers()) {
+                            list.add(p.getName());
+                        }
+                    } else {
+                        list.add(hint);
+                    }
                 } catch (Exception ignored) {}
 
                 return list;

@@ -1,9 +1,6 @@
 package pl.kubag5.g5troll.trolls;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.Sound;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
@@ -13,6 +10,7 @@ public class ScaryRandomTeleport extends Troll {
     public ScaryRandomTeleport() {
         super("ScaryRandomTeleport", "Teleports player with amazing effects", new String[]{"50"});
         setUsage("/troll execute ScaryRandomTeleport {player} {range}");
+        setIcon(Material.BLACK_WOOL);
     }
 
     @Override

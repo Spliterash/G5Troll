@@ -12,6 +12,7 @@ public class FakeDiamondOre extends Troll {
     public FakeDiamondOre() {
         super("FakeDiamondOre", "changes stone to diamond ore", new String[]{"25", "50"});
         setUsage("/troll execute FakeDiamondOre {player} {range} {percent} ");
+        setIcon(Material.DIAMOND_ORE);
     }
 
     @Override

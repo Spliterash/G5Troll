@@ -1,12 +1,14 @@
 package pl.kubag5.g5troll.trolls;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
 public class Rotate extends Troll {
     public Rotate() {
         super("Rotate", "rotates the player", new String[]{"90", "0"});
         setUsage("/troll execute Rotate {player} {YAW} {PITCH}");
+        setIcon(Material.APPLE);
     }
 
     @Override
@@ -23,6 +25,6 @@ public class Rotate extends Troll {
             b = Integer.parseInt(args[2]);
         } catch (Exception ignored) {}
 
-        p.setRotation(p.getLocation().getYaw() + a, p.getLocation().getPitch() + b);
+        utils.setRotation(p,p.getLocation().getYaw() + a, p.getLocation().getPitch() + b);
     }
 }

@@ -15,6 +15,7 @@ public class FakeBlocks extends Troll {
     public FakeBlocks() {
         super("FakeBlocks", "Creates random fake blocks around the player.",  new String[]{"25", "80"});
         setUsage("/troll execute FakeBlocks {player} {range} {count} ");
+        setIcon(Material.BAMBOO);
     }
 
     BlockData[] fakeblocks = {

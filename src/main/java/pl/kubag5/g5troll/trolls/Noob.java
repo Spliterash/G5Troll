@@ -13,6 +13,7 @@ import org.bukkit.util.Vector;
 public class Noob extends Troll {
     public Noob() {
         super("Noob", "creates a sign saying \"noob\"", null);
+        setIcon(Material.OAK_SIGN);
     }
 
     @Override
@@ -28,6 +29,6 @@ public class Noob extends Troll {
         sign.setGlowingText(true);
 
         sign.update();
-        p.setRotation(0, 0);
+        utils.setRotation(p,0, 0);
     }
 }

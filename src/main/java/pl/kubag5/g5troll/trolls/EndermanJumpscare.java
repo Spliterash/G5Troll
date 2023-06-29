@@ -2,6 +2,7 @@ package pl.kubag5.g5troll.trolls;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Enderman;
 import org.bukkit.entity.EntityType;
@@ -14,6 +15,7 @@ import pl.kubag5.g5troll.G5Troll;
 public class EndermanJumpscare extends Troll{
     public EndermanJumpscare() {
         super("EndermanJumpscare", "Enderman jumpscare... :)", null);
+        setIcon(Material.ENDERMAN_SPAWN_EGG);
     }
 
     @Override
@@ -31,7 +33,11 @@ public class EndermanJumpscare extends Troll{
         loc.setYaw(p.getLocation().getYaw()-180);
         Enderman enderman = (Enderman) p.getWorld().spawnEntity(loc, EntityType.ENDERMAN);
         enderman.setAI(false);
-        enderman.setScreaming(true);
+        try {
+            enderman.setScreaming(true);
+        } catch (NoSuchMethodError ex) {
+            Bukkit.getConsoleSender().sendMessage("G5Troll can't use setScreaming() method");
+        }
         enderman.setInvulnerable(true);
         p.playSound(p.getLocation(), Sound.ENTITY_ENDERMAN_SCREAM, 2.0f, 0.0f);
         p.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_DIGGING, 50, 20, true, false));

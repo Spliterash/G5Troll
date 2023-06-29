@@ -5,3 +5,4 @@ changer:
     default_arg1: "5"
     default_arg2: "25"
     usage: "/troll execute TROLL_NAME {player} {arg1} {arg2}"
+    icon: "DIRT"

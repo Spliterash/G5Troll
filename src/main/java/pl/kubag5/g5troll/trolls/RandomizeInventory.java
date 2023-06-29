@@ -10,6 +10,7 @@ import java.util.*;
 public class RandomizeInventory extends Troll {
     public RandomizeInventory() {
         super("RandomizeInventory", "Randomize items in inventory", null);
+        setIcon(Material.MELON_SEEDS);
     }
 
     @Override

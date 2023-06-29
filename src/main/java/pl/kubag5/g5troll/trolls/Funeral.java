@@ -1,6 +1,7 @@
 package pl.kubag5.g5troll.trolls;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
@@ -9,6 +10,7 @@ import pl.kubag5.g5troll.G5Troll;
 public class Funeral extends Troll {
     public Funeral() {
         super("Funeral", "Knocks the player to the ground.", null);
+        setIcon(Material.SAND);
     }
 
     @Override

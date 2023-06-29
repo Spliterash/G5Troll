@@ -2,6 +2,7 @@ package pl.kubag5.g5troll.trolls;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.EntityType;
@@ -15,6 +16,7 @@ public class AirShots extends Troll {
     public AirShots() {
         super("AirShots", "shoots arrows from the air.", new String[]{"10"});
         setUsage("/troll execute AirShots {player} {seconds}");
+        setIcon(Material.ARROW);
     }
 
     @Override

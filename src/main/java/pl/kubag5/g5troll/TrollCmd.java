@@ -1,13 +1,16 @@
 package pl.kubag5.g5troll;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import pl.kubag5.g5troll.trolls.Troll;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 
 public class TrollCmd implements CommandExecutor {
 
@@ -48,8 +51,24 @@ public class TrollCmd implements CommandExecutor {
                         sender.sendMessage(ChatColor.GREEN + "Default args: " + ChatColor.GOLD + Arrays.toString(troll.getArgs()));
                         sender.sendMessage(ChatColor.GREEN + "Args length: " + ChatColor.GOLD + troll.getArgsLength());
                         sender.sendMessage(ChatColor.GREEN + "Usage: " + ChatColor.GOLD + troll.getUsage());
+                        sender.sendMessage(ChatColor.GREEN + "Icon: " + ChatColor.GOLD + troll.getIcon());
                     }
                 }
+            }
+            if (arg1.equalsIgnoreCase("menu")) {
+                if (sender instanceof Player) {
+                    Collection<? extends Player> playersCollection = Bukkit.getOnlinePlayers();
+                    G5GUI gui = new G5GUI(ChatColor.GREEN + "Choose player", playersCollection.toArray(new Player[playersCollection.size()]));
+                    Bukkit.getPluginManager().registerEvents(gui, G5Troll.getInstance());
+                    gui.open((Player) sender);
+
+                }
+            }
+            if (arg1.equalsIgnoreCase("reload")) {
+               G5Troll.getInstance().reloadConfig();
+                sender.sendMessage(ChatColor.RED + "kubag5" + ChatColor.GRAY + " >>> " + ChatColor.GREEN + "G5Troll config reloaded");
+               G5Troll.getInstance().loadChanger();
+                sender.sendMessage(ChatColor.RED + "kubag5" + ChatColor.GRAY + " >>> " + ChatColor.GREEN + "changer reloaded");
             }
         }
         return false;

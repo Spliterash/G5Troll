@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 public class Cobweb extends Troll {
     public Cobweb() {
         super("Cobweb", "slow down the player with the web", null);
+        setIcon(Material.COBWEB);
     }
 
     @Override

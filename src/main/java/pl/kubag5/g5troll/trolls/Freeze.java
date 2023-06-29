@@ -2,6 +2,7 @@ package pl.kubag5.g5troll.trolls;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -14,6 +15,7 @@ public class Freeze extends Troll implements Listener {
     public Freeze() {
         super("Freeze", "Freeze player", new String[]{"10"});
         setUsage("/troll execute Firework {player} {seconds}");
+        setIcon(Material.ICE);
     }
 
     ArrayList<Player> freezeList = new ArrayList<>();

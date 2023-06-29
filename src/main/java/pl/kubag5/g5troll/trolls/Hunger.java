@@ -1,6 +1,7 @@
 package pl.kubag5.g5troll.trolls;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
 public class Hunger extends Troll {
@@ -8,6 +9,7 @@ public class Hunger extends Troll {
     public Hunger() {
         super("Hunger", "Set the food level.", new String[]{"0"});
         setUsage("/troll execute Hunger {player} {FoodLevel}");
+        setIcon(Material.BREAD);
     }
 
     @Override

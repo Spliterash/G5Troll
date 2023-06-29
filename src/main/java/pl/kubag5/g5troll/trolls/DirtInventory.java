@@ -9,6 +9,7 @@ import org.bukkit.inventory.ItemStack;
 public class DirtInventory extends Troll {
     public DirtInventory() {
         super("DirtInventory", "Drops all items and fills inventory with dirt.", null);
+        setIcon(Material.DIRT);
     }
 
     @Override

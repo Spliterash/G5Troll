@@ -1,6 +1,7 @@
 package pl.kubag5.g5troll.trolls;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -9,6 +10,7 @@ public class MobRide extends Troll {
     public MobRide() {
         super("MobRide", "the player will start riding the mob.", new String[]{"COW"});
         setUsage("/troll execute MobRide {player} {MobType}");
+        setIcon(Material.COW_SPAWN_EGG);
     }
 
     @Override

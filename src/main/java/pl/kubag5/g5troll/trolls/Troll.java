@@ -1,17 +1,30 @@
 package pl.kubag5.g5troll.trolls;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import pl.kubag5.g5troll.Utils;
 
 public class Troll {
     String name, desc;
     String[] args;
     String usage;
+    Material icon = Material.DIRT;
+    boolean activeInMenu = true;
+    Utils utils = new Utils();
     public Troll(String name, String desc, String[] args) {
         this.name = name;
         this.desc = desc;
         this.args = args;
         usage = "/troll execute " + name + " {player}";
+    }
+
+    public boolean isActiveInMenu() {
+        return activeInMenu;
+    }
+
+    public void setActiveInMenu(boolean activeInMenu) {
+        this.activeInMenu = activeInMenu;
     }
 
     public String getUsage() {
@@ -57,6 +70,15 @@ public class Troll {
 
     public void setArg(int i, String arg) {
         this.args[i] = arg;
+    }
+
+
+    public Material getIcon() {
+        return icon;
+    }
+
+    public void setIcon(Material icon) {
+        this.icon = icon;
     }
 
     public void execute(String[] args) {

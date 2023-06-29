@@ -9,6 +9,7 @@ public class Anvil extends Troll {
     public Anvil() {
         super("Anvil", "Drop an anvil on a player", new String[]{"20"});
         setUsage("/troll execute Anvil {player} {height}");
+        setIcon(Material.ANVIL);
     }
 
     @Override

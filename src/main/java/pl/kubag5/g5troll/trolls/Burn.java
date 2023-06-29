@@ -1,12 +1,14 @@
 package pl.kubag5.g5troll.trolls;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
 public class Burn extends Troll {
     public Burn() {
         super("Burn", "Burn player",  new String[]{"5"});
         setUsage("/troll execute Burn {player} {seconds}");
+        setIcon(Material.FLINT_AND_STEEL);
     }
 
     @Override

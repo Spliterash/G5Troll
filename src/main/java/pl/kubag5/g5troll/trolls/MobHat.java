@@ -1,6 +1,7 @@
 package pl.kubag5.g5troll.trolls;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -9,6 +10,7 @@ public class MobHat extends Troll {
     public MobHat() {
         super("MobHat", "Places a entity on the player's head.", new String[]{"PIG"});
         setUsage("/troll execute MobHat {player} {MobType}");
+        setIcon(Material.PIG_SPAWN_EGG);
     }
 
     @Override

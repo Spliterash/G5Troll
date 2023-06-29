@@ -3,12 +3,15 @@ package pl.kubag5.g5troll;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.server.ServerLoadEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import pl.kubag5.g5troll.trolls.*;
+import pl.kubag5.g5troll.trolls.Void;
 
 import java.util.ArrayList;
 
@@ -38,7 +41,6 @@ public final class G5Troll extends JavaPlugin implements Listener {
             new Rotate(),
             new ScaryRandomTeleport(),
             new Funeral(),
-            // new
             new AntiMiner(),
             new SheepTroll(),
             new EndermanJumpscare(),
@@ -46,7 +48,10 @@ public final class G5Troll extends JavaPlugin implements Listener {
             new MobRide(),
             new DirtInventory(),
             new AirShots(),
-            new BlockRain()
+            new BlockRain(),
+            new Swap(),
+            new Void(),
+            new Message()
     };
 
     @Override
@@ -70,6 +75,27 @@ public final class G5Troll extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onServerLoad(ServerLoadEvent e) {
+        loadChanger();
+        writeInfo();
+    }
+
+    public int getTrollCount() {
+        return getTrolls().length;
+    }
+
+    public void writeInfo() {
+        ConsoleCommandSender sender = Bukkit.getConsoleSender();
+        if (!isEnabled()) {
+            sender.sendMessage(ChatColor.RED + "G5Troll is disabled.");
+        } else {
+            sender.sendMessage(ChatColor.GREEN + "G5Troll is enabled.");
+            sender.sendMessage(ChatColor.YELLOW + "Stats:");
+            sender.sendMessage(ChatColor.YELLOW + "TrollCount: " + ChatColor.AQUA + getTrollCount());
+        }
+    }
+
+
+    public void loadChanger() {
         for (String st : getConfig().getConfigurationSection("changer").getKeys(false)) {
             Troll troll = getTrollByName(st);
             if (troll != null) {
@@ -79,6 +105,9 @@ public final class G5Troll extends JavaPlugin implements Listener {
                     }
                     if (str.equalsIgnoreCase("usage")) {
                         troll.setUsage(getConfig().getString("changer." + st + ".usage"));
+                    }
+                    if (str.equalsIgnoreCase("icon")) {
+                        troll.setIcon(Material.valueOf(getConfig().getString("changer." + st + ".icon").toUpperCase()));
                     }
                     if (str.startsWith("default_arg")) {
                         try {

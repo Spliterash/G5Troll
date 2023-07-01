@@ -28,7 +28,8 @@ public class Freeze extends Troll implements Listener {
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute(TrollEvent event) {
+        String[] args = event.getArgs();
         Player p = Bukkit.getPlayer(args[0]);
         int arg2 = Integer.parseInt(getArg(0));
         try {

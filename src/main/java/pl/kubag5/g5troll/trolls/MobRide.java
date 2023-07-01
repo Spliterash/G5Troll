@@ -14,7 +14,8 @@ public class MobRide extends Troll {
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute(TrollEvent event) {
+        String[] args = event.getArgs();
         Player p = Bukkit.getPlayer(args[0]);
         try {
             Entity mob = p.getWorld().spawnEntity(p.getLocation(), EntityType.valueOf(args[1].toUpperCase()));

@@ -25,6 +25,7 @@ public class TrollCmdTabCompleter implements TabCompleter {
             list.add("check");
             list.add("menu");
             list.add("reload");
+            list.add("info");
             return list;
         }
         if (args.length == 2) {

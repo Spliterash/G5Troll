@@ -4,12 +4,11 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
-public class Hunger extends Troll {
-
-    public Hunger() {
-        super("Hunger", "Set the food level.", new String[]{"0"});
-        setUsage("/troll execute Hunger {player} {FoodLevel}");
-        setIcon(Material.BREAD);
+public class Nuke extends Troll {
+    public Nuke() {
+        super("Nuke", "Creates explosion.", new String[]{"20"});
+        setUsage("/troll execute Nuke {player} {power}");
+        setIcon(Material.FIRE_CHARGE);
     }
 
     @Override
@@ -20,6 +19,6 @@ public class Hunger extends Troll {
         try {
             a = Integer.parseInt(args[1]);
         } catch (Exception ignored) {}
-        p.setFoodLevel(a);
+        p.getWorld().createExplosion(p.getLocation(), a, true);
     }
 }

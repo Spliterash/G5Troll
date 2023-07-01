@@ -12,7 +12,8 @@ public class InventoryDrop extends Troll {
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute(TrollEvent event) {
+        String[] args = event.getArgs();
         Player p = Bukkit.getPlayer(args[0]);
         ItemStack[] contents = p.getInventory().getContents();
         p.getInventory().clear();

@@ -14,7 +14,8 @@ public class Swap extends Troll {
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute(TrollEvent event) {
+        String[] args = event.getArgs();
         Player p = Bukkit.getPlayer(args[0]);
         Player p2 = Bukkit.getPlayer(args[1]);
         Location loc = p.getLocation();

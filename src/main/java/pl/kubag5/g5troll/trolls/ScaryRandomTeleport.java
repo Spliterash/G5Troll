@@ -14,7 +14,8 @@ public class ScaryRandomTeleport extends Troll {
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute(TrollEvent event) {
+        String[] args = event.getArgs();
         Player p = Bukkit.getPlayer(args[0]);
 
         int a = Integer.parseInt(getArg(0));

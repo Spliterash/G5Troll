@@ -12,7 +12,8 @@ public class AntiMiner extends Troll {
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute(TrollEvent event) {
+        String[] args = event.getArgs();
         Player p = Bukkit.getPlayer(args[0]);
         Location pl = p.getLocation();
         int y = 2 + pl.getWorld().getHighestBlockYAt(pl.getBlockX(), pl.getBlockZ());

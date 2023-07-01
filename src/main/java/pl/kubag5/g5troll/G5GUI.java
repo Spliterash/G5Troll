@@ -12,6 +12,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import pl.kubag5.g5troll.trolls.Troll;
+import pl.kubag5.g5troll.trolls.TrollEvent;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -169,8 +170,10 @@ public class G5GUI implements Listener {
         if (pt == PageType.TROLL) {
             Troll troll = (Troll) objects[click];
             if (troll.isActiveInMenu()) {
-                troll.execute(new String[]{target.getName()});
-                whoClick.closeInventory();
+                troll.execute(new TrollEvent(whoClick, target, new String[]{whoClick.getName()}));
+                if (troll.isCloseGUI()) whoClick.closeInventory();
+
+
             }
         }
         if (pt == PageType.PLAYER) {

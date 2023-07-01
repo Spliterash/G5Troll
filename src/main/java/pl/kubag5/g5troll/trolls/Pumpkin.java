@@ -12,7 +12,8 @@ public class Pumpkin extends Troll {
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute(TrollEvent event) {
+        String[] args = event.getArgs();
         Player p = Bukkit.getPlayer(args[0]);
         ItemStack it = new ItemStack(Material.CARVED_PUMPKIN);
         if (p.getInventory().getHelmet() == null) {

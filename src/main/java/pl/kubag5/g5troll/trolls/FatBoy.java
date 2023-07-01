@@ -7,16 +7,19 @@ import org.bukkit.World;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.util.Vector;
 import pl.kubag5.g5troll.G5Troll;
 
 import java.util.Random;
 
-public class AirShots extends Troll {
-    public AirShots() {
-        super("AirShots", "shoots arrows from the air.", new String[]{"10"});
-        setUsage("/troll execute AirShots {player} {seconds}");
-        setIcon(Material.ARROW);
+public class FatBoy extends Troll {
+    public FatBoy() {
+        super("FatBoy", "the player gets heavier", new String[]{"15"});
+        setIcon(Material.ANVIL);
+        setUsage("/troll execute FatBoy {player} {seconds}");
     }
 
     @Override
@@ -28,7 +31,6 @@ public class AirShots extends Troll {
             a = Integer.parseInt(args[1]);
         } catch (Exception ignored) {}
         int finalA = a*4;
-        Random random = new Random();
         BukkitRunnable task = new BukkitRunnable() {
             int aCC = finalA;
             @Override
@@ -39,11 +41,8 @@ public class AirShots extends Troll {
                     aCC--;
                 }
                 if (p != null) {
-                    Location playerLocation = p.getLocation();
-                    World world = playerLocation.getWorld();
-                    Location arrowLocation = new Location(world, playerLocation.getX() + random.nextInt(9)-4, playerLocation.getY()+7, playerLocation.getZ() + random.nextInt(9)-4);
-                    Arrow arrow = (Arrow) world.spawnEntity(arrowLocation, EntityType.ARROW);
-                    arrow.setVelocity(playerLocation.toVector().subtract(arrowLocation.toVector()).normalize().multiply(2.0));
+                    p.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 6, 0, true, false));
+                    p.setVelocity(p.getVelocity().add(new Vector(0,-0.25,0)));
                 }
             }
         };

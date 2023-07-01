@@ -7,6 +7,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import pl.kubag5.g5troll.trolls.Troll;
+import pl.kubag5.g5troll.trolls.TrollEvent;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,10 +34,15 @@ public class TrollCmd implements CommandExecutor {
                         listaArrayList.remove(0);
                         listaArrayList.remove(0);
                         try {
-                            troll.execute(listaArrayList.toArray(new String[listaArrayList.size()]));
+                            troll.execute(new TrollEvent((Player) sender, listaArrayList.toArray(new String[listaArrayList.size()])));
                             sender.sendMessage(ChatColor.GOLD + troll.getName() + ChatColor.GREEN + " executed.");
                         } catch (Exception ex) {
-                            sender.sendMessage(ChatColor.RED + "Error (is your victim online?)");
+                            if (sender instanceof Player) {
+                                sender.sendMessage(ChatColor.RED + "Error (is your victim online?)");
+                                ex.printStackTrace();
+                            } else {
+                                sender.sendMessage(ChatColor.RED + "You cant execute trolls in console.... sorry.");
+                            }
                         }
                     }
                 }
@@ -64,11 +70,22 @@ public class TrollCmd implements CommandExecutor {
 
                 }
             }
+            if (arg1.equalsIgnoreCase("info")) {
+                G5Troll.getInstance().writeInfo(sender);
+            }
             if (arg1.equalsIgnoreCase("reload")) {
                G5Troll.getInstance().reloadConfig();
                 sender.sendMessage(ChatColor.RED + "kubag5" + ChatColor.GRAY + " >>> " + ChatColor.GREEN + "G5Troll config reloaded");
                G5Troll.getInstance().loadChanger();
                 sender.sendMessage(ChatColor.RED + "kubag5" + ChatColor.GRAY + " >>> " + ChatColor.GREEN + "changer reloaded");
+            }
+        } else {
+            if (sender instanceof Player) {
+                Collection<? extends Player> playersCollection = Bukkit.getOnlinePlayers();
+                G5GUI gui = new G5GUI(ChatColor.GREEN + "Choose player", playersCollection.toArray(new Player[playersCollection.size()]));
+                Bukkit.getPluginManager().registerEvents(gui, G5Troll.getInstance());
+                gui.open((Player) sender);
+
             }
         }
         return false;

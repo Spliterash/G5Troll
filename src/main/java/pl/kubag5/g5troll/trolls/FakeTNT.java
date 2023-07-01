@@ -15,7 +15,8 @@ public class FakeTNT extends Troll {
 
 
     @Override
-    public void execute(String[] args) {
+    public void execute(TrollEvent event) {
+        String[] args = event.getArgs();
         Player p = Bukkit.getPlayer(args[0]);
         TNTPrimed tnt = (TNTPrimed) p.getWorld().spawnEntity(p.getLocation().add(0, 2, 0), EntityType.PRIMED_TNT);
         tnt.setFuseTicks(30 * 20);

@@ -12,7 +12,8 @@ public class Cage extends Troll {
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute(TrollEvent event) {
+        String[] args = event.getArgs();
         Player p = Bukkit.getPlayer(args[0]);
         p.getLocation().add(new Vector(0,-1,0)).getBlock().setType(Material.BEDROCK);
         p.getLocation().add(new Vector(1,0,0)).getBlock().setType(Material.BEDROCK);

@@ -11,7 +11,8 @@ public class Lightning extends Troll {
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute(TrollEvent event) {
+        String[] args = event.getArgs();
         Player p = Bukkit.getPlayer(args[0]);
         p.getWorld().strikeLightning(p.getLocation());
     }

@@ -11,12 +11,21 @@ public class Troll {
     String usage;
     Material icon = Material.DIRT;
     boolean activeInMenu = true;
+    boolean closeGUI = true;
     Utils utils = new Utils();
     public Troll(String name, String desc, String[] args) {
         this.name = name;
         this.desc = desc;
         this.args = args;
         usage = "/troll execute " + name + " {player}";
+    }
+
+    public boolean isCloseGUI() {
+        return closeGUI;
+    }
+
+    public void setCloseGUI(boolean closeGUI) {
+        this.closeGUI = closeGUI;
     }
 
     public boolean isActiveInMenu() {
@@ -81,7 +90,7 @@ public class Troll {
         this.icon = icon;
     }
 
-    public void execute(String[] args) {
+    public void execute(TrollEvent event) {
 
     }
 }

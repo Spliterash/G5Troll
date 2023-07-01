@@ -17,7 +17,8 @@ public class Noob extends Troll {
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute(TrollEvent event) {
+        String[] args = event.getArgs();
         Player p = Bukkit.getPlayer(args[0]);
         Location signloc = p.getLocation().add(new Vector(0,1,0));
         p.getWorld().setBlockData(signloc, Material.OAK_WALL_SIGN.createBlockData());

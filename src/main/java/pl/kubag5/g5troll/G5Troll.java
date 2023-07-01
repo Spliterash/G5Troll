@@ -4,6 +4,7 @@ package pl.kubag5.g5troll;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
@@ -51,7 +52,14 @@ public final class G5Troll extends JavaPlugin implements Listener {
             new BlockRain(),
             new Swap(),
             new Void(),
-            new Message()
+            new Message(),
+            // news
+            new Nuke(),
+            new FriendlyCreeper(),
+            new Hacker(),
+            new GuardianJumpscare(),
+            new FatBoy(),
+            new SeeInventory()
     };
 
     @Override
@@ -70,27 +78,31 @@ public final class G5Troll extends JavaPlugin implements Listener {
             config.options().copyDefaults(true);
             this.saveDefaultConfig();
         }
-
     }
 
     @EventHandler
     public void onServerLoad(ServerLoadEvent e) {
         loadChanger();
-        writeInfo();
+        writeInfo(Bukkit.getConsoleSender());
     }
 
     public int getTrollCount() {
         return getTrolls().length;
     }
 
-    public void writeInfo() {
-        ConsoleCommandSender sender = Bukkit.getConsoleSender();
+    int spigotID = 110652;
+    public void writeInfo(CommandSender sender) {
         if (!isEnabled()) {
             sender.sendMessage(ChatColor.RED + "G5Troll is disabled.");
         } else {
             sender.sendMessage(ChatColor.GREEN + "G5Troll is enabled.");
             sender.sendMessage(ChatColor.YELLOW + "Stats:");
             sender.sendMessage(ChatColor.YELLOW + "TrollCount: " + ChatColor.AQUA + getTrollCount());
+            new UpdateChecker(this, spigotID).getVersion(version -> {
+                sender.sendMessage(ChatColor.YELLOW + "Your G5Troll Version: " + ChatColor.AQUA + getDescription().getVersion());
+                sender.sendMessage(ChatColor.YELLOW + "Newest G5Troll Version: " + ChatColor.AQUA + version);
+
+            });
         }
     }
 

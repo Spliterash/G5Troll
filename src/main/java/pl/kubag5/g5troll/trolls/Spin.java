@@ -15,7 +15,8 @@ public class Spin extends Troll {
         setIcon(Material.GOLDEN_APPLE);
     }
     @Override
-    public void execute(String[] args) {
+    public void execute(TrollEvent event) {
+        String[] args = event.getArgs();
         Player p = Bukkit.getPlayer(args[0]);
         int arg2 = Integer.parseInt(getArg(0));
         try {

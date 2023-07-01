@@ -8,11 +8,13 @@ public class Message extends Troll {
 
     public Message() {
         super("Message", "Sending message as a player.", new String[]{"I am noob."});
+        setUsage("/troll execute Message {player} [message]");
         setIcon(Material.OAK_BUTTON);
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute(TrollEvent event) {
+        String[] args = event.getArgs();
         Player p = Bukkit.getPlayer(args[0]);
         if (args.length != 1) {
             String str = "";

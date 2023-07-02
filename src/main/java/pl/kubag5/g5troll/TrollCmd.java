@@ -34,11 +34,16 @@ public class TrollCmd implements CommandExecutor {
                         listaArrayList.remove(0);
                         listaArrayList.remove(0);
                         try {
-                            troll.execute(new TrollEvent((Player) sender, listaArrayList.toArray(new String[listaArrayList.size()])));
-                            sender.sendMessage(ChatColor.GOLD + troll.getName() + ChatColor.GREEN + " executed.");
+                            TrollEvent te = new TrollEvent((Player) sender, listaArrayList.toArray(new String[listaArrayList.size()]));
+                            if (te.verify()) {
+                                troll.execute(te);
+                                sender.sendMessage(ChatColor.GOLD + troll.getName() + ChatColor.GREEN + " executed.");
+                            } else {
+                                sender.sendMessage(ChatColor.RED + "Player Error (Your target is offline)");
+                            }
                         } catch (Exception ex) {
                             if (sender instanceof Player) {
-                                sender.sendMessage(ChatColor.RED + "Error (is your victim online?)");
+                                sender.sendMessage(ChatColor.RED + "OtherError");
                                 ex.printStackTrace();
                             } else {
                                 sender.sendMessage(ChatColor.RED + "You cant execute trolls in console.... sorry.");

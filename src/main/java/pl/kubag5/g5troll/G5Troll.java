@@ -5,7 +5,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -53,13 +52,16 @@ public final class G5Troll extends JavaPlugin implements Listener {
             new Swap(),
             new Void(),
             new Message(),
-            // news
             new Nuke(),
             new FriendlyCreeper(),
             new Hacker(),
             new GuardianJumpscare(),
             new FatBoy(),
-            new SeeInventory()
+            new SeeInventory(),
+            // news
+            new Cloud(),
+            new ServerHacked()
+
     };
 
     @Override

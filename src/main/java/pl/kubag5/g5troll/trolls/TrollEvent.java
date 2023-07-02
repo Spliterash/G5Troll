@@ -20,6 +20,16 @@ public class TrollEvent {
         this.target = target;
     }
 
+    public boolean verify() {
+        boolean a = true;
+        if (getTarget() == null) a = false;
+        if (!getTarget().isOnline()) a = false;
+        if (getExecutor() == null) a = false;
+        if (!getExecutor().isOnline()) a = false;
+        if (getArgs() == null) a = false;
+        return a;
+    }
+
     public Player getExecutor() {
         return executor;
     }

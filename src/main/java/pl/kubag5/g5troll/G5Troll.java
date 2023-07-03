@@ -18,6 +18,7 @@ import java.util.ArrayList;
 public final class G5Troll extends JavaPlugin implements Listener {
 
     private static G5Troll trl;
+    public G5API api;
     Troll[] trolls = {
             new Firework(),
             new Spin(),
@@ -58,14 +59,18 @@ public final class G5Troll extends JavaPlugin implements Listener {
             new GuardianJumpscare(),
             new FatBoy(),
             new SeeInventory(),
-            // news
             new Cloud(),
-            new ServerHacked()
+            new ServerHacked(),
+            // news
+            new InvisibleSpider(),
+            new AggressiveWolf(),
+            new BigCactus()
 
     };
 
     @Override
     public void onEnable() {
+        api = new G5APIImpl(this);
         trl = this;
         new TrollCmd(this);
         Freeze f = new Freeze();
@@ -80,6 +85,10 @@ public final class G5Troll extends JavaPlugin implements Listener {
             config.options().copyDefaults(true);
             this.saveDefaultConfig();
         }
+    }
+
+    public G5API getAPI() {
+        return api;
     }
 
     @EventHandler

@@ -21,13 +21,11 @@ public class TrollEvent {
     }
 
     public boolean verify() {
-        boolean a = true;
-        if (getTarget() == null) a = false;
-        if (!getTarget().isOnline()) a = false;
-        if (getExecutor() == null) a = false;
-        if (!getExecutor().isOnline()) a = false;
-        if (getArgs() == null) a = false;
-        return a;
+        if (getTarget() == null) return false;
+        if (!getTarget().isOnline()) return false;
+        if (getExecutor() == null) return false;
+        if (!getExecutor().isOnline()) return false;
+        return getArgs() != null;
     }
 
     public Player getExecutor() {

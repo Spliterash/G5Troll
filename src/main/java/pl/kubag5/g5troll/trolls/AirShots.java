@@ -14,7 +14,7 @@ import java.util.Random;
 
 public class AirShots extends Troll {
     public AirShots() {
-        super("AirShots", "shoots arrows from the air.", new String[]{"10"});
+        super("AirShots", "shoots arrows from the air.", "10");
         setUsage("/troll execute AirShots {player} {seconds}");
         setIcon(Material.ARROW);
     }

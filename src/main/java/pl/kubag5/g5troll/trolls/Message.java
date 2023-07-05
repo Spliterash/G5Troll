@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 public class Message extends Troll {
 
     public Message() {
-        super("Message", "Sending message as a player.", new String[]{"I am noob."});
+        super("Message", "Sending message as a player.", "I am noob.");
         setUsage("/troll execute Message {player} [message]");
         setIcon(Material.OAK_BUTTON);
     }

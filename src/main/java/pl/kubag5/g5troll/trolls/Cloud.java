@@ -12,7 +12,7 @@ import java.util.Random;
 
 public class Cloud extends Troll {
     public Cloud() {
-        super("Cloud", "Cloud will appear on the player", new String[]{"15"});
+        super("Cloud", "Cloud will appear on the player", "15");
         setIcon(Material.WHITE_WOOL);
         setUsage("/troll execute Cloud {player} {seconds}");
     }

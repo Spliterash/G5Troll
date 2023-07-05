@@ -8,7 +8,7 @@ import pl.kubag5.g5troll.G5Troll;
 
 public class Back extends Troll {
     public Back() {
-        super("Back", "Return the player to his old location.", new String[]{"2"});
+        super("Back", "Return the player to his old location.", "2");
         setUsage("/troll execute Back {player} {seconds}");
         setIcon(Material.BONE_MEAL);
     }

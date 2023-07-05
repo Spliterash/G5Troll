@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 
 public class FriendlyCreeper extends Troll {
     public FriendlyCreeper() {
-        super("FriendlyCreeper", "Spawn creeper with 0 explosion radius.", new String[]{"1"});
+        super("FriendlyCreeper", "Spawn creeper with 0 explosion radius.", "1");
         setUsage("/troll execute FriendlyCreeper {player} {count}");
         setIcon(Material.CREEPER_HEAD);
     }

@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
 
 public class Burn extends Troll {
     public Burn() {
-        super("Burn", "Burn player",  new String[]{"5"});
+        super("Burn", "Burn player", "5");
         setUsage("/troll execute Burn {player} {seconds}");
         setIcon(Material.FLINT_AND_STEEL);
     }

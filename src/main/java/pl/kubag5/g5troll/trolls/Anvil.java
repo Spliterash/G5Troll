@@ -7,7 +7,7 @@ import org.bukkit.util.Vector;
 
 public class Anvil extends Troll {
     public Anvil() {
-        super("Anvil", "Drop an anvil on a player", new String[]{"20"});
+        super("Anvil", "Drop an anvil on a player", "20");
         setUsage("/troll execute Anvil {player} {height}");
         setIcon(Material.ANVIL);
     }

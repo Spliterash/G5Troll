@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 
 public class CreeperSound extends Troll {
     public CreeperSound() {
-        super("CreeperSound", "plays creeper sound next to player", null);
+        super("CreeperSound", "plays creeper sound next to player");
         setIcon(Material.CREEPER_HEAD);
     }
 

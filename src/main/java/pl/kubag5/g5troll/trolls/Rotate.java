@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
 
 public class Rotate extends Troll {
     public Rotate() {
-        super("Rotate", "rotates the player", new String[]{"90", "0"});
+        super("Rotate", "rotates the player", "90", "0");
         setUsage("/troll execute Rotate {player} {YAW} {PITCH}");
         setIcon(Material.APPLE);
     }

@@ -9,7 +9,7 @@ import org.bukkit.util.Vector;
 
 public class Void extends Troll {
     public Void() {
-        super("Void", "destroys all blocks under the player.", null);
+        super("Void", "destroys all blocks under the player.");
         setIcon(Material.BEDROCK);
     }
 

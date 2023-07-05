@@ -1,8 +1,7 @@
 package pl.kubag5.g5troll.trolls;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
+import pl.kubag5.g5troll.G5Troll;
 import pl.kubag5.g5troll.Utils;
 
 public class Troll {
@@ -11,21 +10,12 @@ public class Troll {
     String usage;
     Material icon = Material.DIRT;
     boolean activeInMenu = true;
-    boolean closeGUI = true;
     Utils utils = new Utils();
-    public Troll(String name, String desc, String[] args) {
+    public Troll(String name, String desc, String... args) {
         this.name = name;
         this.desc = desc;
         this.args = args;
         usage = "/troll execute " + name + " {player}";
-    }
-
-    public boolean isCloseGUI() {
-        return closeGUI;
-    }
-
-    public void setCloseGUI(boolean closeGUI) {
-        this.closeGUI = closeGUI;
     }
 
     public boolean isActiveInMenu() {

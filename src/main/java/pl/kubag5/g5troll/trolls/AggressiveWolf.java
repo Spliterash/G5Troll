@@ -10,7 +10,7 @@ import pl.kubag5.g5troll.G5Troll;
 
 public class AggressiveWolf extends Troll {
     public AggressiveWolf() {
-        super("AggressiveWolf", "Spawn aggressive wolf", new String[]{"1"});
+        super("AggressiveWolf", "Spawn aggressive wolf", "1");
         setUsage("/troll execute AggressiveWolf {player} {count}");
         setIcon(Material.BONE);
     }

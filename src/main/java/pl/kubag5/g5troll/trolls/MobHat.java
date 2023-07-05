@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 
 public class MobHat extends Troll {
     public MobHat() {
-        super("MobHat", "Places a entity on the player's head.", new String[]{"PIG"});
+        super("MobHat", "Places a entity on the player's head.", "PIG");
         setUsage("/troll execute MobHat {player} {MobType}");
         setIcon(Material.PIG_SPAWN_EGG);
     }

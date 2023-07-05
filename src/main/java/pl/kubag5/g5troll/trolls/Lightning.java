@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
 
 public class Lightning extends Troll {
     public Lightning() {
-        super("Lightning", "Hit player using lightning", null);
+        super("Lightning", "Hit player using lightning");
         setIcon(Material.YELLOW_WOOL);
     }
 

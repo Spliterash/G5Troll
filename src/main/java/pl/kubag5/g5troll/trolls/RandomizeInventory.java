@@ -9,7 +9,7 @@ import java.util.*;
 
 public class RandomizeInventory extends Troll {
     public RandomizeInventory() {
-        super("RandomizeInventory", "Randomize items in inventory", null);
+        super("RandomizeInventory", "Randomize items in inventory");
         setIcon(Material.MELON_SEEDS);
     }
 

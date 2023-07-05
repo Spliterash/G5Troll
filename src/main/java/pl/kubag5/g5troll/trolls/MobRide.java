@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 
 public class MobRide extends Troll {
     public MobRide() {
-        super("MobRide", "the player will start riding the mob.", new String[]{"COW"});
+        super("MobRide", "the player will start riding the mob.", "COW");
         setUsage("/troll execute MobRide {player} {MobType}");
         setIcon(Material.COW_SPAWN_EGG);
     }

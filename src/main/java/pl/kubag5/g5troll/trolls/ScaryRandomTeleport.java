@@ -8,7 +8,7 @@ import org.bukkit.potion.PotionEffectType;
 
 public class ScaryRandomTeleport extends Troll {
     public ScaryRandomTeleport() {
-        super("ScaryRandomTeleport", "Teleports player with amazing effects", new String[]{"50"});
+        super("ScaryRandomTeleport", "Teleports player with amazing effects", "50");
         setUsage("/troll execute ScaryRandomTeleport {player} {range}");
         setIcon(Material.BLACK_WOOL);
     }

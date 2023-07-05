@@ -10,7 +10,7 @@ import pl.kubag5.g5troll.Utils;
 
 public class Spin extends Troll {
     public Spin() {
-        super("Spin", "Spin the player!", new String[]{"6", "3"});
+        super("Spin", "Spin the player!", "6", "3");
         setUsage("/troll execute Spin {player} {seconds} {power}");
         setIcon(Material.GOLDEN_APPLE);
     }

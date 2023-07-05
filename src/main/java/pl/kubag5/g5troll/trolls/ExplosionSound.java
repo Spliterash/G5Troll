@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 
 public class ExplosionSound extends Troll {
     public ExplosionSound() {
-        super("ExplosionSound", "plays explosion sound next to player", null);
+        super("ExplosionSound", "plays explosion sound next to player");
         setIcon(Material.TNT);
     }
 

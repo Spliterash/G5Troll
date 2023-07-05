@@ -7,7 +7,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class InventoryDrop extends Troll {
     public InventoryDrop() {
-        super("InventoryDrop", "Drops inventory", null);
+        super("InventoryDrop", "Drops inventory");
         setIcon(Material.WHEAT_SEEDS);
     }
 

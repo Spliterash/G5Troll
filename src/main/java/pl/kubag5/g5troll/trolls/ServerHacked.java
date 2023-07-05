@@ -9,7 +9,7 @@ import pl.kubag5.g5troll.G5Troll;
 
 public class ServerHacked extends Troll {
     public ServerHacked() {
-        super("ServerHacked", "Fake Hacker Attack", null);
+        super("ServerHacked", "Fake Hacker Attack");
         setIcon(Material.BOW);
     }
 

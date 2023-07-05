@@ -7,7 +7,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class Pumpkin extends Troll {
     public Pumpkin() {
-        super("Pumpkin", "Put the pumpkin on the player", null);
+        super("Pumpkin", "Put the pumpkin on the player");
         setIcon(Material.CARVED_PUMPKIN);
     }
 

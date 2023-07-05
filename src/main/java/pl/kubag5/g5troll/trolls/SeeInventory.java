@@ -4,8 +4,7 @@ import org.bukkit.Material;
 
 public class SeeInventory extends Troll {
     public SeeInventory() {
-        super("SeeInventory", "see player inventory.", null);
-        setCloseGUI(false);
+        super("SeeInventory", "see player inventory.");
         setIcon(Material.STICK);
 
     }
@@ -13,6 +12,5 @@ public class SeeInventory extends Troll {
     @Override
     public void execute(TrollEvent event) {
         event.getExecutor().openInventory(event.getTarget().getInventory());
-
     }
 }

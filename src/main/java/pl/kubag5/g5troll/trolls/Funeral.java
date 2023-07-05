@@ -9,7 +9,7 @@ import pl.kubag5.g5troll.G5Troll;
 
 public class Funeral extends Troll {
     public Funeral() {
-        super("Funeral", "Knocks the player to the ground.", null);
+        super("Funeral", "Knocks the player to the ground.");
         setIcon(Material.SAND);
     }
 

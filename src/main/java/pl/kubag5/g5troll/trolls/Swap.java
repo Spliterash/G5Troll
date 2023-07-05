@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 
 public class Swap extends Troll {
     public Swap() {
-        super("Swap", "swaps 2 players positions.", new String[]{"{player}"});
+        super("Swap", "swaps 2 players positions.", "{player}");
         setActiveInMenu(false);
         setIcon(Material.COD);
         setUsage("/troll execute Swap {player} {player}");

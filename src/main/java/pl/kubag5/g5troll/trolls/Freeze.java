@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class Freeze extends Troll implements Listener {
     public Freeze() {
-        super("Freeze", "Freeze player", new String[]{"10"});
+        super("Freeze", "Freeze player", "10");
         setUsage("/troll execute Firework {player} {seconds}");
         setIcon(Material.ICE);
     }

@@ -9,7 +9,7 @@ import org.bukkit.potion.PotionEffectType;
 
 public class GuardianJumpscare extends Troll {
     public GuardianJumpscare() {
-        super("GuardianJumpscare", "Guardian Jumpscare... :)", null);
+        super("GuardianJumpscare", "Guardian Jumpscare... :)");
         setIcon(Material.GLOWSTONE);
     }
 

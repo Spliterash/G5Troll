@@ -11,7 +11,7 @@ import java.util.Random;
 
 public class SheepTroll extends Troll {
     public SheepTroll() {
-        super("Sheep", "spawns sheep with a random color.", new String[]{"5"});
+        super("Sheep", "spawns sheep with a random color.", "5");
         setUsage("/troll execute Sheep {player} {sheepCount}");
         setIcon(Material.WHITE_WOOL);
     }

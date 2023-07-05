@@ -15,7 +15,7 @@ import java.util.Random;
 
 public class Hacker extends Troll {
     public Hacker() {
-        super("Hacker", "The player becomes a cheater.", new String[]{"10"});
+        super("Hacker", "The player becomes a cheater.", "10");
         setIcon(Material.DIAMOND_SWORD);
         setUsage("/troll execute Hacker {player} {seconds}");
     }

@@ -171,8 +171,8 @@ public class G5GUI implements Listener {
             Troll troll = (Troll) objects[click];
             if (troll.isActiveInMenu()) {
                 TrollEvent te = new TrollEvent(whoClick, target, new String[]{target.getName()});
+                 whoClick.closeInventory();
                 if (te.verify()) troll.execute(te);
-                if (troll.isCloseGUI()) whoClick.closeInventory();
             }
         }
         if (pt == PageType.PLAYER) {

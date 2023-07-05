@@ -9,7 +9,7 @@ import org.bukkit.entity.Spider;
 
 public class InvisibleSpider extends Troll {
     public InvisibleSpider() {
-        super("InvisibleSpider", "Spawn invisible spider", new String[]{"1"});
+        super("InvisibleSpider", "Spawn invisible spider", "1");
         setUsage("/troll execute InvisibleSpider {player} {count}");
         setIcon(Material.SPIDER_EYE);
     }

@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 
 public class AntiMiner extends Troll {
     public AntiMiner() {
-        super("AntiMiner", "kicks the player out of the hole", null);
+        super("AntiMiner", "kicks the player out of the hole");
         setIcon(Material.GOLDEN_PICKAXE);
     }
 

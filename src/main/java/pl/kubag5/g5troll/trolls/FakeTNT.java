@@ -9,7 +9,7 @@ import pl.kubag5.g5troll.G5Troll;
 
 public class FakeTNT extends Troll {
     public FakeTNT() {
-        super("FakeTNT", "Summon fake tnt next to player", null);
+        super("FakeTNT", "Summon fake tnt next to player");
         setIcon(Material.TNT);
     }
 

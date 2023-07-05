@@ -8,7 +8,7 @@ import org.bukkit.util.Vector;
 public class Firework extends Troll {
 
     public Firework() {
-        super("Firework", "Launch the player into the air!", new String[]{"3.5"});
+        super("Firework", "Launch the player into the air!", "3.5");
         setUsage("/troll execute Firework {player} {power}");
         setIcon(Material.FIREWORK_ROCKET);
     }

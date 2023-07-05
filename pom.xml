@@ -6,7 +6,7 @@
 
     <groupId>pl.kubag5</groupId>
     <artifactId>G5Troll</artifactId>
-    <version>1.3</version>
+    <version>1.4</version>
     <packaging>jar</packaging>
 
     <name>G5Troll</name>
@@ -69,6 +69,12 @@
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
             <version>1.19.4-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot</artifactId>
+            <version>CUSTOM1</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

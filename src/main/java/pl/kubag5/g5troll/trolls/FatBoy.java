@@ -17,7 +17,7 @@ import java.util.Random;
 
 public class FatBoy extends Troll {
     public FatBoy() {
-        super("FatBoy", "the player gets heavier", new String[]{"15"});
+        super("FatBoy", "the player gets heavier", "15");
         setIcon(Material.ANVIL);
         setUsage("/troll execute FatBoy {player} {seconds}");
     }

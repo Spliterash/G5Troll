@@ -7,7 +7,7 @@ import org.bukkit.block.Block;
 
 public class BigCactus extends Troll {
     public BigCactus() {
-        super("BigCactus", "Creates a cactus all the way to the top", null);
+        super("BigCactus", "Creates a cactus all the way to the top");
         setIcon(Material.CACTUS);
     }
 

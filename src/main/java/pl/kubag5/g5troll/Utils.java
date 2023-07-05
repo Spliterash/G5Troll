@@ -16,4 +16,8 @@ public class Utils {
         }
     }
 
+    public String getVersion() {
+        return Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
+    }
+
 }

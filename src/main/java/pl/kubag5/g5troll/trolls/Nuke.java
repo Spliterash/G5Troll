@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
 
 public class Nuke extends Troll {
     public Nuke() {
-        super("Nuke", "Creates explosion.", new String[]{"20"});
+        super("Nuke", "Creates explosion.", "20");
         setUsage("/troll execute Nuke {player} {power}");
         setIcon(Material.FIRE_CHARGE);
     }

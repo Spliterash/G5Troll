@@ -14,7 +14,7 @@ import pl.kubag5.g5troll.G5Troll;
 
 public class EndermanJumpscare extends Troll{
     public EndermanJumpscare() {
-        super("EndermanJumpscare", "Enderman jumpscare... :)", null);
+        super("EndermanJumpscare", "Enderman jumpscare... :)");
         setIcon(Material.ENDERMAN_SPAWN_EGG);
     }
 

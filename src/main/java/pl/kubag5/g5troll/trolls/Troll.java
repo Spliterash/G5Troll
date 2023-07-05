@@ -4,7 +4,7 @@ import org.bukkit.Material;
 import pl.kubag5.g5troll.G5Troll;
 import pl.kubag5.g5troll.Utils;
 
-public class Troll {
+public abstract class Troll {
     String name, desc;
     String[] args;
     String usage;
@@ -80,7 +80,5 @@ public class Troll {
         this.icon = icon;
     }
 
-    public void execute(TrollEvent event) {
-
-    }
+    public abstract void execute(TrollEvent event);
 }

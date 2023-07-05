@@ -4,7 +4,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Spider;
 import org.bukkit.entity.Wolf;
 import pl.kubag5.g5troll.G5Troll;
 

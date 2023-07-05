@@ -48,6 +48,7 @@ public class TrollEvent {
         this.args = args;
     }
 
+    // args[0] is target.
     public String[] getArgs() {
         return args;
     }

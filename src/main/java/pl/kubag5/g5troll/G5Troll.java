@@ -64,12 +64,16 @@ public final class G5Troll extends JavaPlugin implements Listener {
             new InvisibleSpider(),
             new AggressiveWolf(),
             new BigCactus(),
-            // news
             new FakeDeath(),
             new FakeDamage(),
             new EndScreen(),
             new DemoScreen(),
-            new LoadingScreen()
+            new LoadingScreen(),
+            // news
+            new FakeCreative(),
+            new FakeHunger(),
+            new ChangeHeldSlot(),
+            new FakeExperience()
     };
 
 

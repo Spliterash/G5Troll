@@ -6,7 +6,7 @@
 
     <groupId>pl.kubag5</groupId>
     <artifactId>G5Troll</artifactId>
-    <version>1.6</version>
+    <version>1.7</version>
     <packaging>jar</packaging>
 
     <name>G5Troll</name>

@@ -3,18 +3,18 @@ package pl.kubag5.g5troll.trolls;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 import pl.kubag5.g5troll.G5Troll;
 
+public class NoGravity extends Troll {
 
-
-public class SnowGolemEffect extends Troll {
-
-    public SnowGolemEffect() {
-        super("SnowGolemEffect", "Creates snow under the player.", "10");
-        setIcon(Material.SNOW_BLOCK);
-        setUsage("/troll execute SnowGolemEffect {player} {seconds}");
+    public NoGravity() {
+        super("NoGravity", "The player will lose their gravity.", "10");
+        setIcon(Material.PAPER);
+        setUsage("/troll execute NoGravity {player} {seconds}");
     }
 
     @Override
@@ -36,11 +36,7 @@ public class SnowGolemEffect extends Troll {
                     c--;
                 }
                 if (p != null) {
-                    if (p.getLocation().getBlock().getType() == Material.AIR) {
-                        if (p.getLocation().add(new Vector(0,-1,0)).getBlock().getType() != Material.AIR) {
-                            p.getLocation().getBlock().setType(Material.SNOW);
-                        }
-                    }
+                   p.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 6,-1));
                 }
             }
         };

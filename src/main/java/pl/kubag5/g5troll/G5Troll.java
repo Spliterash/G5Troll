@@ -73,11 +73,15 @@ public final class G5Troll extends JavaPlugin implements Listener {
             new FakeHunger(),
             new ChangeHeldSlot(),
             new FakeExperience(),
-            // news
             new NormalRandomTeleport(),
             new RandomRotate(),
             new HeadDance(),
-            new SnowGolemEffect()
+            new SnowGolemEffect(),
+            // news
+            new FlamingBootsEffect(),
+            new NoGravity(),
+            new EggShooter(),
+            new Spam()
     };
 
 

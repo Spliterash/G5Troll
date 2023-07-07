@@ -8,13 +8,12 @@ import org.bukkit.util.Vector;
 import pl.kubag5.g5troll.G5Troll;
 
 
+public class FlamingBootsEffect extends Troll {
 
-public class SnowGolemEffect extends Troll {
-
-    public SnowGolemEffect() {
-        super("SnowGolemEffect", "Creates snow under the player.", "10");
-        setIcon(Material.SNOW_BLOCK);
-        setUsage("/troll execute SnowGolemEffect {player} {seconds}");
+    public FlamingBootsEffect() {
+        super("FlamingBootsEffect", "Creates fire under the player.", "10");
+        setIcon(Material.LAVA_BUCKET);
+        setUsage("/troll execute FlamingBootsEffect {player} {seconds}");
     }
 
     @Override
@@ -38,7 +37,7 @@ public class SnowGolemEffect extends Troll {
                 if (p != null) {
                     if (p.getLocation().getBlock().getType() == Material.AIR) {
                         if (p.getLocation().add(new Vector(0,-1,0)).getBlock().getType() != Material.AIR) {
-                            p.getLocation().getBlock().setType(Material.SNOW);
+                            p.getLocation().getBlock().setType(Material.FIRE);
                         }
                     }
                 }

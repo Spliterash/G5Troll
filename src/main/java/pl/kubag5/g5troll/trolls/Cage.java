@@ -21,6 +21,6 @@ public class Cage extends Troll {
         p.getLocation().add(new Vector(0,0,1)).getBlock().setType(Material.BEDROCK);
         p.getLocation().add(new Vector(0,0,-1)).getBlock().setType(Material.BEDROCK);
         p.getLocation().add(new Vector(0,2,0)).getBlock().setType(Material.BEDROCK);
-        p.teleport(p.getLocation());
+        p.teleport(p.getLocation().getBlock().getLocation().add(0.5,0,0.5));
     }
 }

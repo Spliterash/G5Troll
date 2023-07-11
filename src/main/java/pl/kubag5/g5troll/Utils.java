@@ -1,8 +1,11 @@
 package pl.kubag5.g5troll;
 
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.ComponentLike;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
 
 public class Utils {
     public void setRotation(Entity e, float yaw, float pitch) {
@@ -38,4 +41,5 @@ public class Utils {
         if (speed >= 2) return 2;
         return 1;
     }
+
 }

@@ -81,22 +81,22 @@ public final class G5Troll extends JavaPlugin implements Listener {
             new NoGravity(),
             new EggShooter(),
             new Spam(),
-            // news
             new Venom(),
             new WaterCage(),
             new FlowerBootsEffect(),
-            new RollingHeldSlot()
+            new RollingHeldSlot(),
+            new Alone(),
+            new BugChunk()
     };
 
 
     @Override
     public void onEnable() {
+        loadWithListener(new Control());
+        loadWithListener(new Freeze());
         api = new G5APIImpl(this);
         trl = this;
         new TrollCmd(this);
-        Freeze f = new Freeze();
-        Bukkit.getServer().getPluginManager().registerEvents(f, this);
-        addTroll(f);
         // https://bstats.org/signatures/bukkit/G5Troll.svg
         int pluginId = 18817;
         Metrics metrics = new Metrics(this, pluginId);
@@ -106,6 +106,11 @@ public final class G5Troll extends JavaPlugin implements Listener {
             config.options().copyDefaults(true);
             this.saveDefaultConfig();
         }
+    }
+
+    public void loadWithListener(Troll t) {
+        Bukkit.getServer().getPluginManager().registerEvents((Listener) t, this);
+        addTroll(t);
     }
 
     public G5API getAPI() {

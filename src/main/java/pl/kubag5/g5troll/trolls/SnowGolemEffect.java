@@ -15,6 +15,7 @@ public class SnowGolemEffect extends Troll {
         super("SnowGolemEffect", "Creates snow under the player.", "10");
         setIcon(Material.SNOW_BLOCK);
         setUsage("/troll execute SnowGolemEffect {player} {seconds}");
+        setShowWorldWarning(true);
     }
 
     @Override

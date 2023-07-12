@@ -18,6 +18,7 @@ public class FlowerBootsEffect extends Troll {
         super("FlowerBootsEffect", "Creates flowers under the player.", "10");
         setIcon(Material.RED_TULIP);
         setUsage("/troll execute FlowerBootsEffect {player} {seconds}");
+        setShowWorldWarning(true);
     }
 
     @Override

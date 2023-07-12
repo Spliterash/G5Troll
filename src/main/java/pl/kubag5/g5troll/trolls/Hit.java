@@ -8,6 +8,7 @@ public class Hit extends Troll {
     public Hit() {
         super("Hit", "Hit player");
         setIcon(Material.STONE_SWORD);
+        setShowKillWarning(true);
     }
 
     @Override

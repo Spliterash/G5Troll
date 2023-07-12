@@ -9,6 +9,7 @@ public class Burn extends Troll {
         super("Burn", "Burn player", "5");
         setUsage("/troll execute Burn {player} {seconds}");
         setIcon(Material.FLINT_AND_STEEL);
+        setShowKillWarning(true);
     }
 
     @Override

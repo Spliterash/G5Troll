@@ -11,6 +11,7 @@ public class Firework extends Troll {
         super("Firework", "Launch the player into the air!", "3.5");
         setUsage("/troll execute Firework {player} {power}");
         setIcon(Material.FIREWORK_ROCKET);
+        setShowKillWarning(true);
     }
 
     @Override

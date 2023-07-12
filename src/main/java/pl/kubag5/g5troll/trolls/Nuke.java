@@ -9,6 +9,8 @@ public class Nuke extends Troll {
         super("Nuke", "Creates explosion.", "20");
         setUsage("/troll execute Nuke {player} {power}");
         setIcon(Material.FIRE_CHARGE);
+        setShowKillWarning(true);
+        setShowWorldWarning(true);
     }
 
     @Override

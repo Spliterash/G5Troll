@@ -11,6 +11,7 @@ public class Cobweb extends Troll {
     public Cobweb() {
         super("Cobweb", "slow down the player with the web");
         setIcon(Material.COBWEB);
+        setShowWorldWarning(true);
     }
 
     @Override

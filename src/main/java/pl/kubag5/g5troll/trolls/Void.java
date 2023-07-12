@@ -11,6 +11,7 @@ public class Void extends Troll {
     public Void() {
         super("Void", "destroys all blocks under the player.");
         setIcon(Material.BEDROCK);
+        setShowKillWarning(true);
     }
 
     @Override

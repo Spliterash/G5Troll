@@ -83,6 +83,17 @@ public class G5GUI implements Listener {
            ArrayList<String> lore = new ArrayList<>();
            lore.add(ChatColor.GOLD + t.getDesc());
            lore.add(" ");
+           if (t.isShowWorldWarning() || t.isShowKillWarning()) {
+               String warnings = "";
+               if (t.isShowKillWarning()) {
+                   warnings += "kill player,";
+               }
+               if (t.isShowWorldWarning()) {
+                   warnings += " change world";
+               }
+               lore.add(ChatColor.RED + "WARNING: this troll can: " + warnings);
+               lore.add(" ");
+           }
            if (!t.isActiveInMenu()) {
                lore.add(ChatColor.RED + "You can't use it in menu! :C");
                lore.add(ChatColor.RED + "Use: " + t.getUsage());

@@ -1,7 +1,6 @@
 package pl.kubag5.g5troll.trolls;
 
 import org.bukkit.Material;
-import pl.kubag5.g5troll.G5Troll;
 import pl.kubag5.g5troll.Utils;
 
 public abstract class Troll {
@@ -10,6 +9,8 @@ public abstract class Troll {
     String usage;
     Material icon = Material.DIRT;
     boolean activeInMenu = true;
+    boolean showWorldWarning;
+    boolean showKillWarning;
     Utils utils = new Utils();
     public Troll(String name, String desc, String... args) {
         this.name = name;
@@ -17,6 +18,23 @@ public abstract class Troll {
         this.args = args;
         usage = "/troll execute " + name + " {player}";
     }
+
+    public boolean isShowKillWarning() {
+        return showKillWarning;
+    }
+
+    public void setShowKillWarning(boolean showKillWarning) {
+        this.showKillWarning = showKillWarning;
+    }
+
+    public boolean isShowWorldWarning() {
+        return showWorldWarning;
+    }
+
+    public void setShowWorldWarning(boolean showWorldWarning) {
+        this.showWorldWarning = showWorldWarning;
+    }
+
 
     public boolean isActiveInMenu() {
         return activeInMenu;

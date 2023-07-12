@@ -14,6 +14,8 @@ public class FlamingBootsEffect extends Troll {
         super("FlamingBootsEffect", "Creates fire under the player.", "10");
         setIcon(Material.LAVA_BUCKET);
         setUsage("/troll execute FlamingBootsEffect {player} {seconds}");
+        setShowKillWarning(true);
+        setShowWorldWarning(true);
     }
 
     @Override

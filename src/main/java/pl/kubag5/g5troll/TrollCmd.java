@@ -2,10 +2,16 @@ package pl.kubag5.g5troll;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Chunk;
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitTask;
 import pl.kubag5.g5troll.trolls.Troll;
 import pl.kubag5.g5troll.trolls.TrollEvent;
 
@@ -52,6 +58,33 @@ public class TrollCmd implements CommandExecutor {
                     }
                 }
             }
+            if (arg1.equalsIgnoreCase("executeAs")) {
+                if (args.length > 3) {
+                    Troll troll = main.getTrollByName(args[2]);
+                    if (troll != null) {
+                        ArrayList<String> listaArrayList = new ArrayList<>(Arrays.asList(args));
+                        listaArrayList.remove(0);
+                        listaArrayList.remove(0);
+                        listaArrayList.remove(0);
+                        try {
+                            TrollEvent te = new TrollEvent(Bukkit.getPlayer(args[1]), listaArrayList.toArray(new String[listaArrayList.size()]));
+                            if (te.verify()) {
+                                troll.execute(te);
+                                sender.sendMessage(ChatColor.GOLD + troll.getName() + ChatColor.GREEN + " executed.");
+                            } else {
+                                sender.sendMessage(ChatColor.RED + "Player Error (Your target is offline)");
+                            }
+                        } catch (Exception ex) {
+                            if (sender instanceof Player) {
+                                sender.sendMessage(ChatColor.RED + "OtherError");
+                                ex.printStackTrace();
+                            } else {
+                                sender.sendMessage(ChatColor.RED + "You cant execute trolls in console.... sorry.");
+                            }
+                        }
+                    }
+                }
+            }
             if (arg1.equalsIgnoreCase("check")) {
                 if (args.length > 1) {
                     Troll troll = main.getTrollByName(args[1]);
@@ -64,6 +97,18 @@ public class TrollCmd implements CommandExecutor {
                         sender.sendMessage(ChatColor.GREEN + "Usage: " + ChatColor.GOLD + troll.getUsage());
                         sender.sendMessage(ChatColor.GREEN + "Icon: " + ChatColor.GOLD + troll.getIcon());
                     }
+                }
+            }
+            if (arg1.equalsIgnoreCase("stopAllTrolls")) {
+                if (args.length > 1) {
+                   Player p = Bukkit.getPlayer(args[1]);
+                    if (p != null) {
+                        stopAllTrolls(p,sender);
+                    } else {
+                        sender.sendMessage(ChatColor.RED + "Player is offline.");
+                    }
+                } else {
+                    sender.sendMessage(ChatColor.GREEN + "use: /troll stopAllTrolls <player> "  + ChatColor.RED + "[may cause lag] [stops all trolls and refreshes chunks at the specified <player>'s location.]");
                 }
             }
             if (arg1.equalsIgnoreCase("menu")) {
@@ -94,5 +139,48 @@ public class TrollCmd implements CommandExecutor {
             }
         }
         return false;
+    }
+
+    public void stopAllTrolls(Player p, CommandSender exe) {
+        exe.sendMessage(ChatColor.RED + "Executing stopAllTrolls..." + ChatColor.DARK_RED + "[May cause lag :/]");
+        int a = 0;
+        for (BukkitTask task : Bukkit.getScheduler().getPendingTasks()) {
+            Plugin taskPlugin = task.getOwner();
+            if (taskPlugin.getName().equalsIgnoreCase("G5Troll")) {
+                Bukkit.getScheduler().cancelTask(task.getTaskId());
+                a++;
+            }
+        }
+        exe.sendMessage(ChatColor.GOLD+""+a+ChatColor.GREEN + " stopped tasks.");
+        p.closeInventory();
+        exe.sendMessage(ChatColor.GREEN + "inventory closed for " + p.getName());
+
+        int b = 0;
+        int viewDistance = Bukkit.getViewDistance();
+        try {
+            viewDistance = p.getViewDistance();
+        } catch (NoSuchMethodError ignored) {}
+        if (viewDistance > 16) viewDistance = 16;
+        World world = p.getWorld();
+        Chunk playerChunk = p.getLocation().getChunk();
+
+        int chunkX = playerChunk.getX();
+        int chunkZ = playerChunk.getZ();
+
+        for (int x = chunkX - viewDistance; x <= chunkX + viewDistance; x++) {
+            for (int z = chunkZ - viewDistance; z <= chunkZ + viewDistance; z++) {
+                Chunk chunk = world.getChunkAt(x, z);
+                if (chunk.isLoaded()) {
+                    p.getWorld().refreshChunk(chunk.getX(), chunk.getZ());
+                    b++;
+                }
+            }
+        }
+        exe.sendMessage(ChatColor.GOLD+""+b+ChatColor.GREEN + " refreshed chunks");
+        p.addPotionEffect(new PotionEffect(PotionEffectType.HEAL, 100, 10));
+        p.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, 100, 10));
+        p.setExp(p.getExp());
+        exe.sendMessage(ChatColor.GREEN + p.getName() +" healed");
+        exe.sendMessage(ChatColor.GREEN + "stopAllTrolls completed");
     }
 }

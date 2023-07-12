@@ -102,10 +102,19 @@ public final class G5Troll extends JavaPlugin implements Listener {
         Metrics metrics = new Metrics(this, pluginId);
         getServer().getPluginManager().registerEvents(this, this);
         FileConfiguration config = this.getConfig();
-        if (!config.isSet("changer")) {
-            config.options().copyDefaults(true);
-            this.saveDefaultConfig();
+        for (Troll t : getTrolls()) {
+            config.addDefault("changer." + t.getName() + ".name", t.getName());
+            config.addDefault("changer." + t.getName() + ".description", t.getDesc());
+            config.addDefault("changer." + t.getName() + ".usage", t.getUsage());
+            config.addDefault("changer." + t.getName() + ".icon", t.getIcon().toString());
+            int i = 1;
+            for (String str : t.getArgs()) {
+                config.addDefault("changer." + t.getName() + ".default_arg" + i, str);
+                i++;
+            }
         }
+        config.options().copyDefaults(true);
+        this.saveConfig();
     }
 
     public void loadWithListener(Troll t) {
@@ -149,6 +158,9 @@ public final class G5Troll extends JavaPlugin implements Listener {
             Troll troll = getTrollByName(st);
             if (troll != null) {
                 for (String str : getConfig().getConfigurationSection("changer." + st).getKeys(false)) {
+                    if (str.equalsIgnoreCase("name")) {
+                        troll.setName(getConfig().getString("changer." + st + ".name"));
+                    }
                     if (str.equalsIgnoreCase("description")) {
                         troll.setDesc(getConfig().getString("changer." + st + ".description"));
                     }
@@ -165,7 +177,7 @@ public final class G5Troll extends JavaPlugin implements Listener {
                         } catch (Exception ignored) {}
                     }
                 }
-                getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[G5Changer] " + st + " changed");
+                getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[G5Changer] " + st + " loaded");
             } else {
                 getServer().getConsoleSender().sendMessage(ChatColor.RED + "[G5Changer] " + st + " don't exist.");
             }

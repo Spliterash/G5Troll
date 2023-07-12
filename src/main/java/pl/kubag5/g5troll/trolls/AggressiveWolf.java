@@ -12,6 +12,7 @@ public class AggressiveWolf extends Troll {
         super("AggressiveWolf", "Spawn aggressive wolf", "1");
         setUsage("/troll execute AggressiveWolf {player} {count}");
         setIcon(Material.BONE);
+        setShowKillWarning(true);
     }
 
     @Override

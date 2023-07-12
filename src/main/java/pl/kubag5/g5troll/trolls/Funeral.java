@@ -11,6 +11,7 @@ public class Funeral extends Troll {
     public Funeral() {
         super("Funeral", "Knocks the player to the ground.");
         setIcon(Material.SAND);
+        setShowKillWarning(true);
     }
 
     @Override

@@ -17,6 +17,7 @@ public class BlockRain extends Troll {
         super("BlockRain", "shoots blocks into the air.", "25", "DIRT", "1.0");
         setUsage("/troll execute BlockRain {player} {blockCount} {blockType} {power}");
         setIcon(Material.ORANGE_WOOL);
+        setShowWorldWarning(true);
     }
 
     @Override

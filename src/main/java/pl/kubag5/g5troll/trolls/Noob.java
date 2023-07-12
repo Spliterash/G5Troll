@@ -14,6 +14,7 @@ public class Noob extends Troll {
     public Noob() {
         super("Noob", "creates a sign saying \"noob\"");
         setIcon(Material.OAK_SIGN);
+        setShowWorldWarning(true);
     }
 
     @Override

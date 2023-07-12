@@ -10,6 +10,8 @@ public class Anvil extends Troll {
         super("Anvil", "Drop an anvil on a player", "20");
         setUsage("/troll execute Anvil {player} {height}");
         setIcon(Material.ANVIL);
+        setShowKillWarning(true);
+        setShowWorldWarning(true);
     }
 
     @Override

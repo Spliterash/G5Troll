@@ -9,6 +9,8 @@ public class BigCactus extends Troll {
     public BigCactus() {
         super("BigCactus", "Creates a cactus all the way to the top");
         setIcon(Material.CACTUS);
+        setShowKillWarning(true);
+        setShowWorldWarning(true);
     }
 
     @Override

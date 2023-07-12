@@ -9,6 +9,7 @@ public class Cage extends Troll {
     public Cage() {
         super("Cage", "Catch a player in a bedrock cage");
         setIcon(Material.BEDROCK);
+        setShowWorldWarning(true);
     }
 
     @Override

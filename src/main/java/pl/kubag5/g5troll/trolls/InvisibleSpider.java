@@ -12,6 +12,7 @@ public class InvisibleSpider extends Troll {
         super("InvisibleSpider", "Spawn invisible spider", "1");
         setUsage("/troll execute InvisibleSpider {player} {count}");
         setIcon(Material.SPIDER_EYE);
+        setShowKillWarning(true);
     }
 
     @Override

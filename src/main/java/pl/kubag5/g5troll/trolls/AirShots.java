@@ -17,6 +17,7 @@ public class AirShots extends Troll {
         super("AirShots", "shoots arrows from the air.", "10");
         setUsage("/troll execute AirShots {player} {seconds}");
         setIcon(Material.ARROW);
+        setShowKillWarning(true);
     }
 
     @Override

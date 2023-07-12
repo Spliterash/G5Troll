@@ -9,6 +9,7 @@ public class WaterCage extends Troll {
     public WaterCage() {
         super("WaterCage", "Drown a player in this trap.");
         setIcon(Material.WATER_BUCKET);
+        setShowWorldWarning(true);
     }
 
     @Override

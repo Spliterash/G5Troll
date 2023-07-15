@@ -86,7 +86,10 @@ public final class G5Troll extends JavaPlugin implements Listener {
             new FlowerBootsEffect(),
             new RollingHeldSlot(),
             new Alone(),
-            new BugChunk()
+            new BugChunk(),
+            // news
+            new FalseAntiCheatBan(),
+            new FakeLava()
     };
 
 

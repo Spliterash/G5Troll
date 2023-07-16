@@ -9,6 +9,7 @@ public class Pumpkin extends Troll {
     public Pumpkin() {
         super("Pumpkin", "Put the pumpkin on the player");
         setIcon(Material.CARVED_PUMPKIN);
+        setShowInventoryWarning(true);
     }
 
     @Override

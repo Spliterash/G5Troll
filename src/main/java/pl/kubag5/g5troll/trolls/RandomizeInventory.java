@@ -11,6 +11,7 @@ public class RandomizeInventory extends Troll {
     public RandomizeInventory() {
         super("RandomizeInventory", "Randomize items in inventory");
         setIcon(Material.MELON_SEEDS);
+        setShowInventoryWarning(true);
     }
 
     @Override

@@ -10,6 +10,7 @@ public class DirtInventory extends Troll {
     public DirtInventory() {
         super("DirtInventory", "Drops all items and fills inventory with dirt.");
         setIcon(Material.DIRT);
+        setShowInventoryWarning(true);
     }
 
     @Override

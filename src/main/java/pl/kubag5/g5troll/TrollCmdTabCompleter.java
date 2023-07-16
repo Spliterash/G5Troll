@@ -54,15 +54,8 @@ public class TrollCmdTabCompleter implements TabCompleter {
                 if (args[0].equalsIgnoreCase("execute")) {
                     Troll troll = main.getTrollByName(args[1]);
                     if (troll != null) {
-                        if ((troll.isShowKillWarning() || troll.isShowWorldWarning()) && Objects.equals(args[2], "")) {
-                            String warnings = "";
-                            if (troll.isShowKillWarning()) {
-                                warnings += "kill player,";
-                            }
-                            if (troll.isShowWorldWarning()) {
-                                warnings += " change world";
-                            }
-                            sender.sendMessage(ChatColor.RED + "WARNING: this troll can: " + warnings);
+                        if (troll.warningsExist() && Objects.equals(args[2], "")) {
+                            sender.sendMessage(main.g5CnfTech("general.warn", troll));
                         }
                     }
                 }
@@ -78,15 +71,8 @@ public class TrollCmdTabCompleter implements TabCompleter {
             if (args[0].equalsIgnoreCase("executeAs")) {
                 Troll troll = main.getTrollByName(args[2]);
                 if (troll != null) {
-                    if ((troll.isShowKillWarning() || troll.isShowWorldWarning()) && Objects.equals(args[3], "")) {
-                        String warnings = "";
-                        if (troll.isShowKillWarning()) {
-                            warnings += "kill player,";
-                        }
-                        if (troll.isShowWorldWarning()) {
-                            warnings += " change world";
-                        }
-                        sender.sendMessage(ChatColor.RED + "WARNING: this troll can: " + warnings);
+                    if (troll.warningsExist() && Objects.equals(args[3], "")) {
+                        sender.sendMessage(main.g5CnfTech("general.warn", troll));
                     }
                 }
             }

@@ -1,6 +1,7 @@
 package pl.kubag5.g5troll.trolls;
 
 import org.bukkit.Material;
+import pl.kubag5.g5troll.G5Troll;
 import pl.kubag5.g5troll.Utils;
 
 public abstract class Troll {
@@ -11,12 +12,54 @@ public abstract class Troll {
     boolean activeInMenu = true;
     boolean showWorldWarning;
     boolean showKillWarning;
+    boolean showInventoryWarning;
+    boolean showWarnings = true;
     Utils utils = new Utils();
     public Troll(String name, String desc, String... args) {
         this.name = name;
         this.desc = desc;
         this.args = args;
         usage = "/troll execute " + name + " {player}";
+    }
+
+    public void setShowWarnings(boolean showWarnings) {
+        this.showWarnings = showWarnings;
+    }
+
+    public boolean warningsExist() {
+        return (showKillWarning || showInventoryWarning || showWorldWarning) && showWarnings;
+    }
+
+    public String getWarnings() {
+        StringBuilder warnings = new StringBuilder();
+        boolean needComma = false;
+        if (isShowKillWarning()) {
+            needComma = true;
+            warnings.append(G5Troll.getInstance().g5CnfTech("general.warnings.kill"));
+        }
+        if (isShowWorldWarning()) {
+            if (needComma) {
+                warnings.append(", ");
+            }
+            warnings.append(G5Troll.getInstance().g5CnfTech("general.warnings.world"));
+        }
+        if (isShowInventoryWarning()) {
+            if (needComma) {
+                warnings.append(", ");
+            }
+            warnings.append(G5Troll.getInstance().g5CnfTech("general.warnings.inventory"));
+        }
+
+        return warnings.toString();
+    }
+
+
+    public boolean isShowInventoryWarning() {
+        return showInventoryWarning;
+    }
+
+    public void setShowInventoryWarning(boolean showInventoryWarning) {
+        this.showInventoryWarning = showInventoryWarning;
     }
 
     public boolean isShowKillWarning() {

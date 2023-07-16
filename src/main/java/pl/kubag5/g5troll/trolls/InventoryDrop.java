@@ -9,6 +9,7 @@ public class InventoryDrop extends Troll {
     public InventoryDrop() {
         super("InventoryDrop", "Drops inventory");
         setIcon(Material.WHEAT_SEEDS);
+        setShowInventoryWarning(true);
     }
 
     @Override

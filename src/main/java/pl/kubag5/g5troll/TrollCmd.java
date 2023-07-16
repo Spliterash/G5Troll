@@ -43,9 +43,9 @@ public class TrollCmd implements CommandExecutor {
                             TrollEvent te = new TrollEvent((Player) sender, listaArrayList.toArray(new String[listaArrayList.size()]));
                             if (te.verify()) {
                                 troll.execute(te);
-                                sender.sendMessage(ChatColor.GOLD + troll.getName() + ChatColor.GREEN + " executed.");
+                                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.g5CnfTech("general.executed", troll)));
                             } else {
-                                sender.sendMessage(ChatColor.RED + "Player Error (Your target is offline)");
+                                sender.sendMessage(main.g5CnfTech("general.offlineError", troll));
                             }
                         } catch (Exception ex) {
                             if (sender instanceof Player) {
@@ -70,9 +70,9 @@ public class TrollCmd implements CommandExecutor {
                             TrollEvent te = new TrollEvent(Bukkit.getPlayer(args[1]), listaArrayList.toArray(new String[listaArrayList.size()]));
                             if (te.verify()) {
                                 troll.execute(te);
-                                sender.sendMessage(ChatColor.GOLD + troll.getName() + ChatColor.GREEN + " executed.");
+                                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.g5CnfTech("general.executed", troll)));
                             } else {
-                                sender.sendMessage(ChatColor.RED + "Player Error (Your target is offline)");
+                                sender.sendMessage(main.g5CnfTech("general.offlineError", troll));
                             }
                         } catch (Exception ex) {
                             if (sender instanceof Player) {
@@ -105,7 +105,7 @@ public class TrollCmd implements CommandExecutor {
                     if (p != null) {
                         stopAllTrolls(p,sender);
                     } else {
-                        sender.sendMessage(ChatColor.RED + "Player is offline.");
+                        sender.sendMessage(main.g5CnfTech("general.offlineError"));
                     }
                 } else {
                     sender.sendMessage(ChatColor.GREEN + "use: /troll stopAllTrolls <player> "  + ChatColor.RED + "[may cause lag] [stops all trolls and refreshes chunks at the specified <player>'s location.]");

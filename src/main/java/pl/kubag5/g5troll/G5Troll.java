@@ -87,9 +87,11 @@ public final class G5Troll extends JavaPlugin implements Listener {
             new RollingHeldSlot(),
             new Alone(),
             new BugChunk(),
-            // news
             new FalseAntiCheatBan(),
-            new FakeLava()
+            new FakeLava(),
+            // news
+            new BigBamboo(),
+            new BigSugarCane()
     };
 
 
@@ -133,6 +135,15 @@ public final class G5Troll extends JavaPlugin implements Listener {
     public void onServerLoad(ServerLoadEvent e) {
         loadChanger();
         writeInfo(Bukkit.getConsoleSender());
+        if (!G5Troll.getInstance().getConfig().getBoolean("general.warningsEnabled")) {
+            for (Troll t : getTrolls()) {
+                t.setShowWarnings(false);
+            }
+        } else {
+            for (Troll t : getTrolls()) {
+                t.setShowWarnings(true);
+            }
+        }
     }
 
     public int getTrollCount() {
@@ -233,6 +244,24 @@ public final class G5Troll extends JavaPlugin implements Listener {
         }
         newTrolls[newTrolls.length - 1] = t;
         trolls = newTrolls;
+    }
+
+
+    public String g5CnfTech(String path, Troll troll) {
+        if (!getConfig().isSet(path)) return "";
+        String ret = ChatColor.translateAlternateColorCodes('&', getConfig().getString(path));
+        if (troll != null) {
+            ret = ret.replaceAll("%troll.name%", troll.getName());
+            ret = ret.replaceAll("%troll.description%", troll.getName());
+            ret = ret.replaceAll("%troll.usage%", troll.getUsage());
+            ret = ret.replaceAll("%troll.icon%", troll.getIcon().toString());
+            ret = ret.replaceAll("%troll.warnings%", troll.getWarnings());
+        }
+        return ret;
+    }
+
+    public String g5CnfTech(String path) {
+        return g5CnfTech(path, null);
     }
 
 

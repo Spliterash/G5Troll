@@ -1,4 +1,5 @@
 general:
+  changerInfo: true
   executed: "&6%troll.name%&a executed!"
   offlineError: "&cYour target is offline!"
   warningsEnabled: true
@@ -7,6 +8,15 @@ general:
     kill: "kill player"
     world: "change world"
     inventory: "change inventory"
+  noMenu:
+    - " "
+    - "&cYou can't use it in menu! :C"
+    - "&aUse: %troll.usage%"
+  close: "&cClose"
+  nextPage: "&eNext Page"
+  previousPage: "&ePrevious Page"
+  chooseTroll: "&aChoose Troll!"
+  choosePlayer: "&bChoose Player!"
 # you can use changer if you want change description, usage or default args.
 changer:
 

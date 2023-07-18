@@ -114,7 +114,7 @@ public class TrollCmd implements CommandExecutor {
             if (arg1.equalsIgnoreCase("menu")) {
                 if (sender instanceof Player) {
                     Collection<? extends Player> playersCollection = Bukkit.getOnlinePlayers();
-                    G5GUI gui = new G5GUI(ChatColor.GREEN + "Choose player", playersCollection.toArray(new Player[playersCollection.size()]));
+                    G5GUI gui = new G5GUI(G5Troll.getInstance().g5CnfTech("general.choosePlayer"), playersCollection.toArray(new Player[playersCollection.size()]));
                     Bukkit.getPluginManager().registerEvents(gui, G5Troll.getInstance());
                     gui.open((Player) sender);
 
@@ -132,7 +132,7 @@ public class TrollCmd implements CommandExecutor {
         } else {
             if (sender instanceof Player) {
                 Collection<? extends Player> playersCollection = Bukkit.getOnlinePlayers();
-                G5GUI gui = new G5GUI(ChatColor.GREEN + "Choose player", playersCollection.toArray(new Player[playersCollection.size()]));
+                G5GUI gui = new G5GUI(G5Troll.getInstance().g5CnfTech("general.choosePlayer"), playersCollection.toArray(new Player[playersCollection.size()]));
                 Bukkit.getPluginManager().registerEvents(gui, G5Troll.getInstance());
                 gui.open((Player) sender);
 

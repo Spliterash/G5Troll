@@ -88,8 +88,9 @@ public class G5GUI implements Listener {
                lore.add(" ");
            }
            if (!t.isActiveInMenu()) {
-               lore.add(ChatColor.RED + "You can't use it in menu! :C");
-               lore.add(ChatColor.RED + "Use: " + t.getUsage());
+               for (String noMenuElement : G5Troll.getInstance().getConfig().getStringList("general.noMenu")) {
+                   lore.add(G5Troll.getInstance().g5CnfTechTranslate(noMenuElement, t));
+               }
            }
            itmeta.setLore(lore);
            it.setItemMeta(itmeta);
@@ -105,19 +106,19 @@ public class G5GUI implements Listener {
     public void addControlls(Inventory newpage) {
         ItemStack close = new ItemStack(Material.BARRIER);
         ItemMeta closemeta = close.getItemMeta();
-        closemeta.setDisplayName(ChatColor.RED + "close");
+        closemeta.setDisplayName(G5Troll.getInstance().g5CnfTech("general.close"));
         close.setItemMeta(closemeta);
         newpage.setItem(26, close);
 
         ItemStack next = new ItemStack(Material.FEATHER);
         ItemMeta nextmeta = next.getItemMeta();
-        nextmeta.setDisplayName(ChatColor.YELLOW + "next page");
+        nextmeta.setDisplayName(G5Troll.getInstance().g5CnfTech("general.nextPage"));
         next.setItemMeta(nextmeta);
         newpage.setItem(25, next);
 
         ItemStack back = new ItemStack(Material.FEATHER);
         ItemMeta backmeta = back.getItemMeta();
-        backmeta.setDisplayName(ChatColor.YELLOW + "previous page");
+        backmeta.setDisplayName(G5Troll.getInstance().g5CnfTech("general.previousPage"));
         back.setItemMeta(backmeta);
         newpage.setItem(24, back);
     }
@@ -180,7 +181,7 @@ public class G5GUI implements Listener {
             }
         }
         if (pt == PageType.PLAYER) {
-            G5GUI gui = new G5GUI(ChatColor.RED+"Choose troll", G5Troll.getInstance().getTrolls(), (Player) objects[click]);
+            G5GUI gui = new G5GUI(G5Troll.getInstance().g5CnfTech("general.chooseTroll"), G5Troll.getInstance().getTrolls(), (Player) objects[click]);
             Bukkit.getPluginManager().registerEvents(gui, G5Troll.getInstance());
             gui.open(whoClick);
         }

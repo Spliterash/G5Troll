@@ -89,9 +89,10 @@ public final class G5Troll extends JavaPlugin implements Listener {
             new BugChunk(),
             new FalseAntiCheatBan(),
             new FakeLava(),
-            // news
             new BigBamboo(),
-            new BigSugarCane()
+            new BigSugarCane(),
+            // news
+            new FakeOp()
     };
 
 
@@ -166,6 +167,19 @@ public final class G5Troll extends JavaPlugin implements Listener {
         }
     }
 
+    public String getCorrectName(String s, Troll t) {
+        if (getTrollByName(s) == t) return s;
+        s = s.replaceAll(" ", "_");
+        if (getTrollByName(s) != null) {
+            for (int i = 0; i < 10; i++) {
+                if (getTrollByName(s+i) == null) {
+                    s = s+i;
+                    break;
+                }
+            }
+        }
+        return s;
+    }
 
     public void loadChanger() {
         for (String st : getConfig().getConfigurationSection("changer").getKeys(false)) {
@@ -173,7 +187,7 @@ public final class G5Troll extends JavaPlugin implements Listener {
             if (troll != null) {
                 for (String str : getConfig().getConfigurationSection("changer." + st).getKeys(false)) {
                     if (str.equalsIgnoreCase("name")) {
-                        troll.setName(getConfig().getString("changer." + st + ".name"));
+                        troll.setName(getCorrectName(getConfig().getString("changer." + st + ".name"),troll));
                     }
                     if (str.equalsIgnoreCase("description")) {
                         troll.setDesc(getConfig().getString("changer." + st + ".description"));
@@ -191,9 +205,9 @@ public final class G5Troll extends JavaPlugin implements Listener {
                         } catch (Exception ignored) {}
                     }
                 }
-                getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[G5Changer] " + st + " loaded");
+                if (getConfig().getBoolean("general.changerInfo")) getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[G5Changer] " + st + " loaded");
             } else {
-                getServer().getConsoleSender().sendMessage(ChatColor.RED + "[G5Changer] " + st + " don't exist.");
+                if (getConfig().getBoolean("general.changerInfo")) getServer().getConsoleSender().sendMessage(ChatColor.RED + "[G5Changer] " + st + " don't exist.");
             }
         }
     }
@@ -249,16 +263,25 @@ public final class G5Troll extends JavaPlugin implements Listener {
 
     public String g5CnfTech(String path, Troll troll) {
         if (!getConfig().isSet(path)) return "";
-        String ret = ChatColor.translateAlternateColorCodes('&', getConfig().getString(path));
-        if (troll != null) {
-            ret = ret.replaceAll("%troll.name%", troll.getName());
-            ret = ret.replaceAll("%troll.description%", troll.getName());
-            ret = ret.replaceAll("%troll.usage%", troll.getUsage());
-            ret = ret.replaceAll("%troll.icon%", troll.getIcon().toString());
-            ret = ret.replaceAll("%troll.warnings%", troll.getWarnings());
-        }
-        return ret;
+        return g5CnfTechTranslate(getConfig().getString(path), troll);
     }
+
+    public String g5CnfTechTranslate(String s, Troll troll) {
+        s = ChatColor.translateAlternateColorCodes('&', s);
+        if (troll != null) {
+            s = s.replaceAll("%troll.name%", troll.getName());
+            s = s.replaceAll("%troll.description%", troll.getName());
+            s = s.replaceAll("%troll.usage%", troll.getUsage());
+            s = s.replaceAll("%troll.icon%", troll.getIcon().toString());
+            s = s.replaceAll("%troll.warnings%", troll.getWarnings());
+        }
+        return s;
+    }
+
+    public String g5CnfTechTranslate(String s) {
+        return g5CnfTechTranslate(s, null);
+    }
+
 
     public String g5CnfTech(String path) {
         return g5CnfTech(path, null);

@@ -1,11 +1,9 @@
 package pl.kubag5.g5troll.trolls;
 
-import net.minecraft.network.protocol.game.PacketPlayOutHeldItemSlot;
-import net.minecraft.network.protocol.game.PacketPlayOutWindowItems;
+import net.minecraft.network.protocol.game.ClientboundSetCarriedItemPacket;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-
-import static pl.kubag5.g5troll.Reflections.*;
+import pl.kubag5.g5troll.Reflections;
 
 public class ChangeHeldSlot extends Troll {
     public ChangeHeldSlot() {
@@ -21,14 +19,12 @@ public class ChangeHeldSlot extends Troll {
         int a = Integer.parseInt(getArg(0));
         try {
             a = Integer.parseInt(args[1]);
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {
+        }
         if (a > 8 || a < 0) a = 0;
         try {
-            Object entityPlayer = entityPlayerHandleMethod.invoke(craftPlayerClass.cast(p));
-            PacketPlayOutHeldItemSlot p1 = new PacketPlayOutHeldItemSlot(a);
-            Object playerConnection = playerConnectionField.get(entityPlayer);
-            Object networkManager = networkManagerField.get(playerConnection);
-            sendPacket.invoke(networkManager, p1);
+            ClientboundSetCarriedItemPacket p1 = new ClientboundSetCarriedItemPacket(a);
+            Reflections.sendPacket(p, p1);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

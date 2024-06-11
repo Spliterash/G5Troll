@@ -1,12 +1,10 @@
 package pl.kubag5.g5troll.trolls;
 
-import net.minecraft.network.protocol.game.PacketPlayOutExperience;
-import net.minecraft.network.protocol.game.PacketPlayOutUpdateHealth;
+import net.minecraft.network.protocol.game.ClientboundSetExperiencePacket;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
-
-import static pl.kubag5.g5troll.Reflections.*;
+import pl.kubag5.g5troll.Reflections;
 
 public class FakeExperience extends Troll {
     public FakeExperience() {
@@ -22,13 +20,11 @@ public class FakeExperience extends Troll {
         int a = Integer.parseInt(getArg(0));
         try {
             a = Integer.parseInt(args[1]);
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {
+        }
         try {
-            PacketPlayOutExperience p1 = new PacketPlayOutExperience(p.getExp(), p.getTotalExperience(), a);
-            Object entityPlayer = entityPlayerHandleMethod.invoke(craftPlayerClass.cast(p));
-            Object playerConnection = playerConnectionField.get(entityPlayer);
-            Object networkManager = networkManagerField.get(playerConnection);
-            sendPacket.invoke(networkManager, p1);
+            ClientboundSetExperiencePacket p1 = new ClientboundSetExperiencePacket(p.getExp(), p.getTotalExperience(), a);
+            Reflections.sendPacket(p, p1);
             p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
         } catch (Exception ex) {
             ex.printStackTrace();

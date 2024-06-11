@@ -1,11 +1,9 @@
 package pl.kubag5.g5troll.trolls;
 
-import net.minecraft.network.protocol.game.PacketPlayOutGameStateChange;
-import net.minecraft.network.protocol.game.PacketPlayOutUpdateHealth;
+import net.minecraft.network.protocol.game.ClientboundGameEventPacket;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-
-import static pl.kubag5.g5troll.Reflections.*;
+import pl.kubag5.g5troll.Reflections;
 
 public class EndScreen extends Troll {
     public EndScreen() {
@@ -18,11 +16,8 @@ public class EndScreen extends Troll {
         Player p = event.getTarget();
         try {
             // hp, food, sat
-            PacketPlayOutGameStateChange p1 = new PacketPlayOutGameStateChange(PacketPlayOutGameStateChange.e, 1);
-            Object entityPlayer = entityPlayerHandleMethod.invoke(craftPlayerClass.cast(p));
-            Object playerConnection = playerConnectionField.get(entityPlayer);
-            Object networkManager = networkManagerField.get(playerConnection);
-            sendPacket.invoke(networkManager, p1);
+            ClientboundGameEventPacket p1 = new ClientboundGameEventPacket(ClientboundGameEventPacket.WIN_GAME, 1);
+            Reflections.sendPacket(p, p1);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

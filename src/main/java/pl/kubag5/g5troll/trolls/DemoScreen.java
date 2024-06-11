@@ -1,12 +1,11 @@
 package pl.kubag5.g5troll.trolls;
 
-import net.minecraft.network.protocol.game.PacketPlayOutGameStateChange;
+import net.minecraft.network.protocol.game.ClientboundGameEventPacket;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import pl.kubag5.g5troll.Reflections;
 
-import static pl.kubag5.g5troll.Reflections.*;
-
-public class DemoScreen extends Troll{
+public class DemoScreen extends Troll {
     public DemoScreen() {
         super("DemoScreen", "Shows the player a demo screen.");
         setIcon(Material.SUNFLOWER);
@@ -17,11 +16,8 @@ public class DemoScreen extends Troll{
         Player p = event.getTarget();
         try {
             // hp, food, sat
-            PacketPlayOutGameStateChange p1 = new PacketPlayOutGameStateChange(PacketPlayOutGameStateChange.f, 0);
-            Object entityPlayer = entityPlayerHandleMethod.invoke(craftPlayerClass.cast(p));
-            Object playerConnection = playerConnectionField.get(entityPlayer);
-            Object networkManager = networkManagerField.get(playerConnection);
-            sendPacket.invoke(networkManager, p1);
+            ClientboundGameEventPacket p1 = new ClientboundGameEventPacket(ClientboundGameEventPacket.DEMO_EVENT, 0);
+            Reflections.sendPacket(p, p1);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
